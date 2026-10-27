@@ -12,13 +12,37 @@
 		3026D57BFB7E4A4778F239C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FF1F10CBDFA723862543C79 /* Assets.xcassets */; };
 		53C862FB621240E4945F0D64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAD9341F9F060A344C623EA9 /* Assets.xcassets */; };
 		6F69DB087EC4D026EFAA502A /* ClinkWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28A8F41CDE733FB24735D6D /* ClinkWatchApp.swift */; };
+		811CCBCFE1A0C3678DF02EBF /* ClinkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F48644FFE21A369AD23E0EE /* ClinkUITests.swift */; };
 		99CCF00465B0718B3EE61BE3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36502BA3B027395E1AB5F58C /* ContentView.swift */; };
 		9B2F464CCB34B1DF2BBD6212 /* Clink Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 116D05C2BB68B89D2055E9EC /* Clink Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A05E8BCC2C3B009088FF19ED /* ClinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04C2C9314EAA444C7C409F /* ClinkTests.swift */; };
 		C9D3D75A654795CF00269EDD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC8F102D9F9420A3D24FA4E2 /* Preview Assets.xcassets */; };
 		E76284B6739753B95944CB1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04463A8B30072C8C9E0687EB /* Preview Assets.xcassets */; };
+		F7A695BAE4B9F05A2D7E04E6 /* ClinkWatchAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D907FBA45DE71A86EDBE0570 /* ClinkWatchAppTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3B1811ABE50A2AF0901E0853 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 35297B76EB67D3CEB149DBF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C3A774C9263EB0A1C11A46BF;
+			remoteInfo = "Clink Watch App";
+		};
+		4DBA6610A459EFFF6078CB4D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 35297B76EB67D3CEB149DBF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 328C783837C9DBCCE90227EF;
+			remoteInfo = Clink;
+		};
+		9947CFAA13DF2D652C48C7A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 35297B76EB67D3CEB149DBF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 328C783837C9DBCCE90227EF;
+			remoteInfo = Clink;
+		};
 		A08280448393EAE2B22C4128 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 35297B76EB67D3CEB149DBF5 /* Project object */;
@@ -47,11 +71,17 @@
 		116D05C2BB68B89D2055E9EC /* Clink Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Clink Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26382F9FA11B93709A2B41CD /* ClinkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinkApp.swift; sourceTree = "<group>"; };
 		36502BA3B027395E1AB5F58C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4F48644FFE21A369AD23E0EE /* ClinkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinkUITests.swift; sourceTree = "<group>"; };
 		89C0E3B52628790F5260C89C /* Clink.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Clink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF1F10CBDFA723862543C79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A0ED2ABC095B7CAA4ABBD7D8 /* ClinkTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ClinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB744FBD4E4035B42E4822AA /* ClinkUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ClinkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF04C2C9314EAA444C7C409F /* ClinkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinkTests.swift; sourceTree = "<group>"; };
 		C28A8F41CDE733FB24735D6D /* ClinkWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinkWatchApp.swift; sourceTree = "<group>"; };
+		D907FBA45DE71A86EDBE0570 /* ClinkWatchAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinkWatchAppTests.swift; sourceTree = "<group>"; };
 		EC8F102D9F9420A3D24FA4E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F261572D4D37933BFCF2FD2D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F4C7335505D95BE3FC430555 /* Clink Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Clink Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAD9341F9F060A344C623EA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,9 +90,20 @@
 			isa = PBXGroup;
 			children = (
 				116D05C2BB68B89D2055E9EC /* Clink Watch App.app */,
+				F4C7335505D95BE3FC430555 /* Clink Watch AppTests.xctest */,
 				89C0E3B52628790F5260C89C /* Clink.app */,
+				A0ED2ABC095B7CAA4ABBD7D8 /* ClinkTests.xctest */,
+				AB744FBD4E4035B42E4822AA /* ClinkUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		20202B14E160C6BCFE1A7D4C /* Clink Watch AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				D907FBA45DE71A86EDBE0570 /* ClinkWatchAppTests.swift */,
+			);
+			path = "Clink Watch AppTests";
 			sourceTree = "<group>";
 		};
 		2D92AB38ADAD2B3E760C2872 = {
@@ -70,6 +111,9 @@
 			children = (
 				C757C5E852FB9922E749E7A6 /* Clink */,
 				553653539F23DF88E8C4BD29 /* Clink Watch App */,
+				20202B14E160C6BCFE1A7D4C /* Clink Watch AppTests */,
+				B82D9344A2BEEDBC5F315C59 /* ClinkTests */,
+				595288E4456B9AAFC1F85D57 /* ClinkUITests */,
 				19D9C726BF5C420A5E1918A9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,6 +135,22 @@
 				B874113A24A09DEB8F79788F /* Preview Content */,
 			);
 			path = "Clink Watch App";
+			sourceTree = "<group>";
+		};
+		595288E4456B9AAFC1F85D57 /* ClinkUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4F48644FFE21A369AD23E0EE /* ClinkUITests.swift */,
+			);
+			path = ClinkUITests;
+			sourceTree = "<group>";
+		};
+		B82D9344A2BEEDBC5F315C59 /* ClinkTests */ = {
+			isa = PBXGroup;
+			children = (
+				BF04C2C9314EAA444C7C409F /* ClinkTests.swift */,
+			);
+			path = ClinkTests;
 			sourceTree = "<group>";
 		};
 		B874113A24A09DEB8F79788F /* Preview Content */ = {
@@ -135,6 +195,24 @@
 			productReference = 89C0E3B52628790F5260C89C /* Clink.app */;
 			productType = "com.apple.product-type.application";
 		};
+		85F625EF636D41E7FE75325A /* ClinkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92865AF708439C8421CB7F31 /* Build configuration list for PBXNativeTarget "ClinkTests" */;
+			buildPhases = (
+				47E6739EDBAEFC7BF4B77E27 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B0EA3B5CB60312A3DCA7661F /* PBXTargetDependency */,
+			);
+			name = ClinkTests;
+			packageProductDependencies = (
+			);
+			productName = ClinkTests;
+			productReference = A0ED2ABC095B7CAA4ABBD7D8 /* ClinkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C3A774C9263EB0A1C11A46BF /* Clink Watch App */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA45025E4A4A6AEFEC2C854C /* Build configuration list for PBXNativeTarget "Clink Watch App" */;
@@ -153,6 +231,42 @@
 			productReference = 116D05C2BB68B89D2055E9EC /* Clink Watch App.app */;
 			productType = "com.apple.product-type.application";
 		};
+		DD9B6986D412C8D54251C2F6 /* ClinkUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DA289BBB23112F4D7E2E5C6 /* Build configuration list for PBXNativeTarget "ClinkUITests" */;
+			buildPhases = (
+				19C2BE5A56F37A4FF859B4DA /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A015E379A2E37785E059C87F /* PBXTargetDependency */,
+			);
+			name = ClinkUITests;
+			packageProductDependencies = (
+			);
+			productName = ClinkUITests;
+			productReference = AB744FBD4E4035B42E4822AA /* ClinkUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		F326FAA6D4D8E8CD98D6316C /* Clink Watch AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C1AB083A5E5295ECC8F6DA23 /* Build configuration list for PBXNativeTarget "Clink Watch AppTests" */;
+			buildPhases = (
+				C2CED4F8C41B6637D03EE5A2 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC5963F3FB1A395EAD62431E /* PBXTargetDependency */,
+			);
+			name = "Clink Watch AppTests";
+			packageProductDependencies = (
+			);
+			productName = "Clink Watch AppTests";
+			productReference = F4C7335505D95BE3FC430555 /* Clink Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -165,7 +279,17 @@
 					328C783837C9DBCCE90227EF = {
 						ProvisioningStyle = Automatic;
 					};
+					85F625EF636D41E7FE75325A = {
+						ProvisioningStyle = Automatic;
+					};
 					C3A774C9263EB0A1C11A46BF = {
+						ProvisioningStyle = Automatic;
+					};
+					DD9B6986D412C8D54251C2F6 = {
+						ProvisioningStyle = Automatic;
+						TestTargetID = 328C783837C9DBCCE90227EF;
+					};
+					F326FAA6D4D8E8CD98D6316C = {
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -186,6 +310,9 @@
 			targets = (
 				328C783837C9DBCCE90227EF /* Clink */,
 				C3A774C9263EB0A1C11A46BF /* Clink Watch App */,
+				85F625EF636D41E7FE75325A /* ClinkTests */,
+				DD9B6986D412C8D54251C2F6 /* ClinkUITests */,
+				F326FAA6D4D8E8CD98D6316C /* Clink Watch AppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -221,12 +348,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		19C2BE5A56F37A4FF859B4DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				811CCBCFE1A0C3678DF02EBF /* ClinkUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		46DDA56A38D731806ED8554F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				29E77FABF996E6F31D2E77A9 /* ClinkApp.swift in Sources */,
 				0C07FE6F4263583472A076D4 /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		47E6739EDBAEFC7BF4B77E27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A05E8BCC2C3B009088FF19ED /* ClinkTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2CED4F8C41B6637D03EE5A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7A695BAE4B9F05A2D7E04E6 /* ClinkWatchAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,9 +389,40 @@
 			target = C3A774C9263EB0A1C11A46BF /* Clink Watch App */;
 			targetProxy = A08280448393EAE2B22C4128 /* PBXContainerItemProxy */;
 		};
+		A015E379A2E37785E059C87F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 328C783837C9DBCCE90227EF /* Clink */;
+			targetProxy = 9947CFAA13DF2D652C48C7A3 /* PBXContainerItemProxy */;
+		};
+		AC5963F3FB1A395EAD62431E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C3A774C9263EB0A1C11A46BF /* Clink Watch App */;
+			targetProxy = 3B1811ABE50A2AF0901E0853 /* PBXContainerItemProxy */;
+		};
+		B0EA3B5CB60312A3DCA7661F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 328C783837C9DBCCE90227EF /* Clink */;
+			targetProxy = 4DBA6610A459EFFF6078CB4D /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		1450B7E76F7F660CC2AC9336 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.colaiacovo.clink.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Clink;
+			};
+			name = Release;
+		};
 		1B4100C0B4668B5E2349ADBC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -309,6 +491,22 @@
 			};
 			name = Debug;
 		};
+		1FF586A8D21B5B77571DA0D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.colaiacovo.clink.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clink.app/Clink";
+			};
+			name = Debug;
+		};
 		39EA8E65EC74E6791C51AB39 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -346,6 +544,39 @@
 				TARGETED_DEVICE_FAMILY = 4;
 			};
 			name = Debug;
+		};
+		6DF84C29BC2DE7AD4EB14537 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.colaiacovo.clink.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Clink;
+			};
+			name = Debug;
+		};
+		8C861FDCB975159FAE5A4EC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.colaiacovo.clink.watchkitapp.tests;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clink Watch App.app/Clink Watch App";
+			};
+			name = Release;
 		};
 		E3A343CDFE9F5CAEE0C3CAD4 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -429,6 +660,39 @@
 			};
 			name = Release;
 		};
+		F6826F223A41CBC9ED8C5EFF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.colaiacovo.clink.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clink.app/Clink";
+			};
+			name = Release;
+		};
+		F9E04399EEFF676BB5E5F9D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.colaiacovo.clink.watchkitapp.tests;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clink Watch App.app/Clink Watch App";
+			};
+			name = Debug;
+		};
 		FA9C817961086727B5D8DE12 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -458,11 +722,38 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
+		4DA289BBB23112F4D7E2E5C6 /* Build configuration list for PBXNativeTarget "ClinkUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DF84C29BC2DE7AD4EB14537 /* Debug */,
+				1450B7E76F7F660CC2AC9336 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		92865AF708439C8421CB7F31 /* Build configuration list for PBXNativeTarget "ClinkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1FF586A8D21B5B77571DA0D2 /* Debug */,
+				F6826F223A41CBC9ED8C5EFF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		A0593A3B6AE8E4A388D8444F /* Build configuration list for PBXNativeTarget "Clink" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				39EA8E65EC74E6791C51AB39 /* Debug */,
 				E3A343CDFE9F5CAEE0C3CAD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C1AB083A5E5295ECC8F6DA23 /* Build configuration list for PBXNativeTarget "Clink Watch AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9E04399EEFF676BB5E5F9D5 /* Debug */,
+				8C861FDCB975159FAE5A4EC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
