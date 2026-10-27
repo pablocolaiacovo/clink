@@ -12,3 +12,6 @@ xcuserdata/
 # Swift Package Manager
 .build/
 .swiftpm/
+
+# Claude Code personal settings
+.claude/settings.local.json
