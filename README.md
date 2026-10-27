@@ -23,3 +23,7 @@ An iPhone app with a companion Apple Watch app, built with SwiftUI.
 3. Pick a simulator or device and press ⌘R.
 
 To run on your own devices, select each target, open **Signing & Capabilities**, and choose your team (your Apple ID).
+
+## License
+
+MIT. See [LICENSE](LICENSE).
