@@ -24,6 +24,10 @@ An iPhone app with a companion Apple Watch app, built with SwiftUI.
 
 To run on your own devices, select each target, open **Signing & Capabilities**, and choose your team (your Apple ID).
 
+## Workflow
+
+Branching, versioning and release steps are in [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
