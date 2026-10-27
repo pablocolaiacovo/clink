@@ -19,7 +19,7 @@ Branch names start with what kind of change it is:
 
 Keep branches small and merge them within a few days. Merge with **Squash and merge**, so each pull request becomes one commit on `main`. GitHub deletes the branch after the merge.
 
-`main` is protected against force-pushes and deletion.
+`main` is protected against force-pushes and deletion. Pull requests can only be merged once the CI check (**Build and test**) passes. As the repo admin, you can still push small changes straight to `main`, and CI runs on them after the push.
 
 ## Commit messages
 
