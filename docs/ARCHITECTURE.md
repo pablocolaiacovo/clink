@@ -1,4 +1,4 @@
-# Clink architecture
+# Clinkr architecture
 
 How the iPhone app and the Apple Watch app fit together. Solid lines are what exists today. Dashed boxes and lines are the usual next pieces, which aren't built yet.
 
@@ -8,15 +8,15 @@ One Xcode project builds two apps. The Watch app is packed inside the iPhone app
 
 ```mermaid
 flowchart LR
-    subgraph xcode["Clink.xcodeproj"]
-        t1["Target: Clink<br/>(iOS 26+)"]
-        t2["Target: Clink Watch App<br/>(watchOS 26+)"]
+    subgraph xcode["Clinkr.xcodeproj"]
+        t1["Target: Clinkr<br/>(iOS 26+)"]
+        t2["Target: Clinkr Watch App<br/>(watchOS 26+)"]
     end
 
-    subgraph bundle["Clink.app"]
+    subgraph bundle["Clinkr.app"]
         phoneBin["iPhone app code"]
         subgraph watchFolder["Watch/"]
-            watchBin["Clink Watch App.app"]
+            watchBin["Clinkr Watch App.app"]
         end
     end
 
@@ -33,16 +33,16 @@ Both apps are SwiftUI apps with the same shape. Each one starts at an `@main` Ap
 
 ```mermaid
 flowchart TB
-    subgraph phone["iPhone app (Clink/)"]
-        pApp["ClinkApp<br/>@main entry point"] --> pView["ContentView<br/>SwiftUI screen"]
+    subgraph phone["iPhone app (Clinkr/)"]
+        pApp["ClinkrApp<br/>@main entry point"] --> pView["ContentView<br/>SwiftUI screen"]
         pModel["Model / app state"]:::planned
         pSync["Connectivity service<br/>(WCSession)"]:::planned
         pView -.-> pModel
         pModel -.-> pSync
     end
 
-    subgraph watch["Watch app (Clink Watch App/)"]
-        wApp["ClinkWatchApp<br/>@main entry point"] --> wView["ContentView<br/>SwiftUI screen"]
+    subgraph watch["Watch app (Clinkr Watch App/)"]
+        wApp["ClinkrWatchApp<br/>@main entry point"] --> wView["ContentView<br/>SwiftUI screen"]
         wModel["Model / app state"]:::planned
         wSync["Connectivity service<br/>(WCSession)"]:::planned
         wView -.-> wModel

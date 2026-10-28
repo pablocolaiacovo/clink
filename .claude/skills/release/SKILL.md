@@ -1,18 +1,18 @@
 ---
 name: release
-description: Cut a new Clink release - bump the version and build number, commit, tag, and create the GitHub release. Use when asked to release, ship, tag, or bump the version.
+description: Cut a new Clinkr release - bump the version and build number, commit, tag, and create the GitHub release. Use when asked to release, ship, tag, or bump the version.
 ---
 
-# Release Clink
+# Release Clinkr
 
 This follows the Releases section of `CONTRIBUTING.md`.
 
 ## 1. Decide the new version
 
-Read the current values from `Clink.xcodeproj/project.pbxproj`:
+Read the current values from `Clinkr.xcodeproj/project.pbxproj`:
 
 ```bash
-grep -E "MARKETING_VERSION|CURRENT_PROJECT_VERSION" Clink.xcodeproj/project.pbxproj | sort -u
+grep -E "MARKETING_VERSION|CURRENT_PROJECT_VERSION" Clinkr.xcodeproj/project.pbxproj | sort -u
 ```
 
 List the changes since the last tag with `git log --oneline $(git describe --tags --abbrev=0 2>/dev/null || git rev-list --max-parents=0 HEAD)..HEAD`. Propose the next version using the rules in CONTRIBUTING.md (patch for fixes, minor for features, stay on `0.x` before the first public release). The build number goes up by one. **Confirm both numbers with the user before changing anything.**

@@ -1,6 +1,6 @@
 import XCTest
 
-final class ClinkUITests: XCTestCase {
+final class ClinkrUITests: XCTestCase {
     override func setUpWithError() throws {
         continueAfterFailure = false
     }
@@ -10,6 +10,6 @@ final class ClinkUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
 
-        XCTAssertTrue(app.staticTexts["Clink"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Clinkr"].waitForExistence(timeout: 5))
     }
 }

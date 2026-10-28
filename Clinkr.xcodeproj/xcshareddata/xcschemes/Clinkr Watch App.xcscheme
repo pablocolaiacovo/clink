@@ -15,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "328C783837C9DBCCE90227EF"
-               BuildableName = "Clink.app"
-               BlueprintName = "Clink"
-               ReferencedContainer = "container:Clink.xcodeproj">
+               BlueprintIdentifier = "C3A774C9263EB0A1C11A46BF"
+               BuildableName = "Clinkr Watch App.app"
+               BlueprintName = "Clinkr Watch App"
+               ReferencedContainer = "container:Clinkr.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "328C783837C9DBCCE90227EF"
-            BuildableName = "Clink.app"
-            BlueprintName = "Clink"
-            ReferencedContainer = "container:Clink.xcodeproj">
+            BlueprintIdentifier = "C3A774C9263EB0A1C11A46BF"
+            BuildableName = "Clinkr Watch App.app"
+            BlueprintName = "Clinkr Watch App"
+            ReferencedContainer = "container:Clinkr.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -44,21 +44,10 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "85F625EF636D41E7FE75325A"
-               BuildableName = "ClinkTests.xctest"
-               BlueprintName = "ClinkTests"
-               ReferencedContainer = "container:Clink.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DD9B6986D412C8D54251C2F6"
-               BuildableName = "ClinkUITests.xctest"
-               BlueprintName = "ClinkUITests"
-               ReferencedContainer = "container:Clink.xcodeproj">
+               BlueprintIdentifier = "F326FAA6D4D8E8CD98D6316C"
+               BuildableName = "Clinkr Watch AppTests.xctest"
+               BlueprintName = "Clinkr Watch AppTests"
+               ReferencedContainer = "container:Clinkr.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -79,10 +68,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "328C783837C9DBCCE90227EF"
-            BuildableName = "Clink.app"
-            BlueprintName = "Clink"
-            ReferencedContainer = "container:Clink.xcodeproj">
+            BlueprintIdentifier = "C3A774C9263EB0A1C11A46BF"
+            BuildableName = "Clinkr Watch App.app"
+            BlueprintName = "Clinkr Watch App"
+            ReferencedContainer = "container:Clinkr.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -96,10 +85,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "328C783837C9DBCCE90227EF"
-            BuildableName = "Clink.app"
-            BlueprintName = "Clink"
-            ReferencedContainer = "container:Clink.xcodeproj">
+            BlueprintIdentifier = "C3A774C9263EB0A1C11A46BF"
+            BuildableName = "Clinkr Watch App.app"
+            BlueprintName = "Clinkr Watch App"
+            ReferencedContainer = "container:Clinkr.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

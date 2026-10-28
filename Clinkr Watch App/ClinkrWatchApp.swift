@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct ClinkApp: App {
+struct ClinkrWatchApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

@@ -1,11 +1,11 @@
 import Foundation
 import Testing
 
-@testable import Clink_Watch_App
+@testable import Clinkr_Watch_App
 
-struct ClinkWatchAppTests {
+struct ClinkrWatchAppTests {
     // Unit tests run inside the app, so Bundle.main is the Watch app.
     @Test func bundleIdentifierIsSet() {
-        #expect(Bundle.main.bundleIdentifier == "com.colaiacovo.clink.watchkitapp")
+        #expect(Bundle.main.bundleIdentifier == "com.colaiacovo.clinkr.watchkitapp")
     }
 }
