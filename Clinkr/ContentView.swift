@@ -6,7 +6,7 @@ struct ContentView: View {
             Image(systemName: "wineglass")
                 .font(.system(size: 56))
                 .foregroundStyle(.tint)
-            Text("Clink")
+            Text("Clinkr")
                 .font(.largeTitle.bold())
             Text("Hello from iPhone")
                 .foregroundStyle(.secondary)

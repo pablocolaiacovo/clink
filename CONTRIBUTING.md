@@ -1,4 +1,4 @@
-# Working on Clink
+# Working on Clinkr
 
 A light workflow for a one-person hobby project. The aim is to keep `main` working without adding paperwork.
 

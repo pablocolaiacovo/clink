@@ -1,11 +1,11 @@
 import Foundation
 import Testing
 
-@testable import Clink
+@testable import Clinkr
 
-struct ClinkTests {
+struct ClinkrTests {
     // Unit tests run inside the app, so Bundle.main is the iPhone app.
     @Test func bundleIdentifierIsSet() {
-        #expect(Bundle.main.bundleIdentifier == "com.colaiacovo.clink")
+        #expect(Bundle.main.bundleIdentifier == "com.colaiacovo.clinkr")
     }
 }

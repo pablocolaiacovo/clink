@@ -18,7 +18,7 @@ simulator_id() {
 
 lint() {
     echo "==> Lint"
-    xcrun swift-format lint --strict --recursive Clink "Clink Watch App" ClinkTests ClinkUITests "Clink Watch AppTests"
+    xcrun swift-format lint --strict --recursive Clinkr "Clinkr Watch App" ClinkrTests ClinkrUITests "Clinkr Watch AppTests"
 }
 
 test_scheme() {
@@ -29,18 +29,18 @@ test_scheme() {
         exit 1
     fi
     echo "==> Test $scheme on $device ($id)"
-    xcodebuild test -project Clink.xcodeproj -scheme "$scheme" -destination "id=$id" \
+    xcodebuild test -project Clinkr.xcodeproj -scheme "$scheme" -destination "id=$id" \
         -derivedDataPath "$DERIVED_DATA" CODE_SIGNING_ALLOWED=NO -quiet
 }
 
 case "${1:-all}" in
     lint) lint ;;
-    ios) test_scheme "Clink" iOS "iPhone" ;;
-    watch) test_scheme "Clink Watch App" watchOS "Apple Watch" ;;
+    ios) test_scheme "Clinkr" iOS "iPhone" ;;
+    watch) test_scheme "Clinkr Watch App" watchOS "Apple Watch" ;;
     all)
         lint
-        test_scheme "Clink" iOS "iPhone"
-        test_scheme "Clink Watch App" watchOS "Apple Watch"
+        test_scheme "Clinkr" iOS "iPhone"
+        test_scheme "Clinkr Watch App" watchOS "Apple Watch"
         ;;
     *)
         echo "Usage: $0 [lint|ios|watch|all]" >&2

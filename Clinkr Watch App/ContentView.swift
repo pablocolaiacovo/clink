@@ -6,7 +6,7 @@ struct ContentView: View {
             Image(systemName: "wineglass")
                 .font(.title)
                 .foregroundStyle(.tint)
-            Text("Clink")
+            Text("Clinkr")
                 .font(.headline)
             Text("Hello from Watch")
                 .font(.footnote)

@@ -1,4 +1,4 @@
-# Clink
+# Clinkr
 
 An iPhone app with a companion Apple Watch app, built with SwiftUI.
 
@@ -11,15 +11,15 @@ An iPhone app with a companion Apple Watch app, built with SwiftUI.
 
 | Folder | Target | What it is |
 |---|---|---|
-| `Clink/` | Clink | The iPhone app |
-| `Clink Watch App/` | Clink Watch App | The Apple Watch app (embedded in the iPhone app) |
+| `Clinkr/` | Clinkr | The iPhone app |
+| `Clinkr Watch App/` | Clinkr Watch App | The Apple Watch app (embedded in the iPhone app) |
 
 ## Running
 
-1. Open `Clink.xcodeproj` in Xcode.
+1. Open `Clinkr.xcodeproj` in Xcode.
 2. Pick a scheme in the toolbar:
-   - **Clink** runs the iPhone app.
-   - **Clink Watch App** runs the Watch app on a paired Watch simulator.
+   - **Clinkr** runs the iPhone app.
+   - **Clinkr Watch App** runs the Watch app on a paired Watch simulator.
 3. Pick a simulator or device and press ⌘R.
 
 To run on your own devices, select each target, open **Signing & Capabilities**, and choose your team (your Apple ID).
