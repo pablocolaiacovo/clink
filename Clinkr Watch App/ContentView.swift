@@ -45,6 +45,9 @@ struct ContentView: View {
                     onLater: {
                         waterNudge.markDismissed(at: .now)
                         closeWaterNudge()
+                    },
+                    onUndo: undoable.map { undoable in
+                        { nightStore.removeEntry(id: undoable.entry.id) }
                     }
                 )
                 .transition(reduceMotion ? .opacity : .move(edge: .bottom))

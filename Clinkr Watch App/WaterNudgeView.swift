@@ -8,6 +8,9 @@ struct WaterNudgeView: View {
     let waterCount: Int
     let onHadOne: () -> Void
     let onLater: () -> Void
+    /// Undoes the drink that brought the nudge on, while its toast is still up. With VoiceOver the toast stays, but the
+    /// nudge covers it, so this offers its Undo as an action on the headline, where VoiceOver lands.
+    var onUndo: (() -> Void)? = nil
 
     var body: some View {
         // Its own stack, so content scrolling up fades under the clock like any other screen.
@@ -33,6 +36,11 @@ struct WaterNudgeView: View {
                         .typeStyle(.watchTitle)
                         .foregroundStyle(.ink)
                         .accessibilityAddTraits(.isHeader)
+                        .accessibilityActions {
+                            if let onUndo {
+                                Button("Undo", action: onUndo)
+                            }
+                        }
                 }
                 message
                     .typeStyle(.watchBody)
