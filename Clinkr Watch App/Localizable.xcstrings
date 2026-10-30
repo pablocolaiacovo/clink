@@ -128,6 +128,28 @@
         }
       }
     },
+    "Today" : {
+      "comment" : "Tonight screen caption for a night that started by day",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoy"
+          }
+        }
+      }
+    },
+    "Tonight" : {
+      "comment" : "Tonight screen caption for a night that started after 5 pm",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta noche"
+          }
+        }
+      }
+    },
     "Undo" : {
       "comment" : "Button that removes the drink just added",
       "localizations" : {
@@ -158,17 +180,6 @@
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "since %@" : {
-      "comment" : "Tonight screen: when the night started, like \"since 9:14 pm\"",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "desde las %@"
           }
         }
       }

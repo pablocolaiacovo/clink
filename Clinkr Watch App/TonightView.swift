@@ -38,11 +38,7 @@ struct TonightView: View {
     @ViewBuilder
     private func center(_ night: Night?) -> some View {
         if let night {
-            // When space runs out, the count gives way before the caption and waters do.
-            ViewThatFits(in: .vertical) {
-                details(night, countStyle: .countHero, captionLines: 1)
-                details(night, countStyle: .watchTitle, captionLines: 2)
-            }
+            details(night)
         } else {
             Text("Swipe up to start the night")
                 .typeStyle(.watchCaption)
@@ -52,24 +48,36 @@ struct TonightView: View {
         }
     }
 
-    private func details(_ night: Night, countStyle: TypeStyle, captionLines: Int) -> some View {
+    /// When space runs out, the count shrinks into what the caption and waters leave, so they keep their size.
+    private func details(_ night: Night) -> some View {
         VStack(spacing: 0) {
             Text(night.drinkCount, format: .number)
-                .typeStyle(countStyle)
-                .monospacedDigit()
+                .typeStyle(.countHero)
                 .foregroundStyle(.ink)
                 .lineLimit(1)
-                .minimumScaleFactor(0.5)
+                .minimumScaleFactor(0.3)
                 .accessibilityLabel(Text("\(night.drinkCount) drinks"))
-            Text("since \(night.startTime, format: .dateTime.hour().minute())")
+            Text(Self.caption(forNightStartingAt: night.startTime))
                 .typeStyle(.watchCaption)
                 .foregroundStyle(.inkMuted)
-                .multilineTextAlignment(.center)
-                .lineLimit(captionLines)
+                .lineLimit(1)
                 .minimumScaleFactor(0.85)
-                .fixedSize(horizontal: false, vertical: true)
+                .layoutPriority(1)
             waters(night.waterCount)
+                .layoutPriority(1)
         }
+    }
+
+    /// "Today" for a night that started in the daytime, like a lunch, otherwise "Tonight".
+    static func caption(
+        forNightStartingAt start: Date,
+        calendar: Calendar = .current
+    ) -> LocalizedStringResource {
+        let hour = calendar.component(.hour, from: start)
+        if (5..<17).contains(hour) {
+            return LocalizedStringResource("Today", comment: "Tonight screen caption for a night that started by day")
+        }
+        return LocalizedStringResource("Tonight", comment: "Tonight screen caption for a night that started after 5 pm")
     }
 
     private func waters(_ count: Int) -> some View {
@@ -79,12 +87,14 @@ struct TonightView: View {
                 .frame(width: Size.inlineGlyph, height: Size.inlineGlyph)
                 .foregroundStyle(.water)
                 .accessibilityHidden(true)
-            Text("\(count) waters")
+            Text(verbatim: "×\(count.formatted())")
                 .typeStyle(.watchCaption)
+                .monospacedDigit()
                 .foregroundStyle(.inkMuted)
                 .lineLimit(1)
-                .minimumScaleFactor(0.8)
         }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(Text("\(count) waters"))
         .padding(.top, Space.s1)
     }
 
