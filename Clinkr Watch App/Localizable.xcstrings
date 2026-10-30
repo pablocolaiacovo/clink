@@ -1,6 +1,99 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%lld drinks" : {
+      "comment" : "VoiceOver label for tonight's count",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld drink"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld drinks"
+                }
+              }
+            }
+          }
+        },
+        "es" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld bebida"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld bebidas"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld waters" : {
+      "comment" : "Tonight screen: waters had tonight",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld water"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld waters"
+                }
+              }
+            }
+          }
+        },
+        "es" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld agua"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld aguas"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Adds the last drink again" : {
+      "comment" : "VoiceOver hint for tapping the tally ring",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vuelve a sumar lo último"
+          }
+        }
+      }
+    },
     "Cheers! That's %lld." : {
       "comment" : "Undo toast after adding a drink",
       "localizations" : {
@@ -20,6 +113,39 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "Swipe up to start the night" : {
+      "comment" : "Tonight screen before the first drink",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deslizá para arrancar la noche"
+          }
+        }
+      }
+    },
+    "Today" : {
+      "comment" : "Tonight screen caption for a night that started by day",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoy"
+          }
+        }
+      }
+    },
+    "Tonight" : {
+      "comment" : "Tonight screen caption for a night that started after 5 pm",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta noche"
           }
         }
       }

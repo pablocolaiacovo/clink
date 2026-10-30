@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// The Watch app's screens. Only Add for now; Tonight (#7) and Night come next, in that swipe order.
+/// The Watch app's screens, in swipe order: Tonight, then Add. Night (#10) comes third.
 ///
 /// The Undo toast sits under every screen, so it shows after any add, wherever it came from.
 struct ContentView: View {
@@ -19,18 +19,13 @@ struct ContentView: View {
     var body: some View {
         // The stack gives the clock its own space, so the grid scrolls under it cleanly.
         NavigationStack {
-            // An inset rather than an overlay, so the screen can still scroll every button clear of the toast. It
-            // goes inside the stack, which doesn't pass an inset on to the scroll view.
-            AddView()
-                .safeAreaInset(edge: .bottom, spacing: 0) {
-                    if let undoable {
-                        UndoToast(type: undoable.entry.type, count: undoable.count) {
-                            nightStore.removeEntry(id: undoable.entry.id)
-                        }
-                        .padding(.horizontal, Space.s2)
-                        .transition(reduceMotion ? .opacity : .move(edge: .bottom).combined(with: .opacity))
-                    }
-                }
+            TabView {
+                TonightView()
+                    .overlay(alignment: .bottom) { undoToast }
+                AddView()
+                    .safeAreaInset(edge: .bottom, spacing: 0) { undoToast }
+            }
+            .tabViewStyle(.verticalPage)
         }
         .onChange(of: nightStore.lastAdded) { _, entry in
             withAnimation(UndoToast.animation) {
@@ -52,6 +47,20 @@ struct ContentView: View {
             withAnimation(UndoToast.animation) {
                 undoable = nil
             }
+        }
+    }
+
+    /// Add takes the toast as an inset, so its list can scroll every button clear of it. Tonight takes it as an
+    /// overlay, since an inset would shrink the ring. Each page adds it itself: the stack doesn't pass an inset on to
+    /// a page's scroll view.
+    @ViewBuilder
+    private var undoToast: some View {
+        if let undoable {
+            UndoToast(type: undoable.entry.type, count: undoable.count) {
+                nightStore.removeEntry(id: undoable.entry.id)
+            }
+            .padding(.horizontal, Space.s2)
+            .transition(reduceMotion ? .opacity : .move(edge: .bottom).combined(with: .opacity))
         }
     }
 

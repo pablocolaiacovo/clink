@@ -6,6 +6,13 @@ Add an entry in the same pull request that makes the decision. Keep it to a few 
 
 What changed in each release is in the [GitHub releases](https://github.com/pablocolaiacovo/clinkr/releases), so there's no separate changelog.
 
+## 2026-10-30 · Watch screens are vertical pages, Tonight first
+
+- **Decision:** The Watch's screens are vertical pages in the order Tonight, Add, Night. Tonight's ring grows 8 slots at a time and is never shown as full or over. When space runs out, as on small Watches or at large text sizes, the count shrinks before the caption and waters do. The Undo toast covers the lower part of the ring on Tonight, but pushes Add's list up so its buttons can scroll clear of it. Under the count, Tonight says "Today" or "Tonight" rather than the start time, and shows waters as the water glyph and "×3" in `ink-muted`.
+- **Why:** Vertical pages are how watchOS apps move between screens now, and the Digital Crown scrolls them. The count is the one thing on Tonight that stays readable at a smaller size. An inset would shrink the ring every time the toast shows. When the night started matters less than how it's going, and the short caption and wordless water count leave the count room to stay big on 40 and 42mm Watches.
+- **Instead of:** "since 9:14 pm", which needed two lines in Spanish on small Watches, and water-coloured digits, since drink colours are fills, never text.
+- **PR:** [#67](https://github.com/pablocolaiacovo/clinkr/pull/67)
+
 ## 2026-10-30 · Undo after every add, never a confirmation
 
 - **Decision:** After any add on the Watch, a toast offers Undo for 5 seconds. It pushes the screen's content up rather than covering it, so every drink button can still be reached. With VoiceOver on, it's read out and stays until the next add or an undo. Its strings live in a Watch-only `Localizable.xcstrings`.
