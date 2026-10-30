@@ -19,6 +19,13 @@ What changed in each release is in the [GitHub releases](https://github.com/pabl
 - **Why:** The docs fell behind after a few pull requests that didn't update them.
 - **PR:** [#64](https://github.com/pablocolaiacovo/clinkr/pull/64)
 
+## 2026-10-30 · Spanish first, in the local slang
+
+- **Decision:** Clinkr launches in Spanish, and its words follow the slang of the launch region instead of formal Spanish, like Birra and Trago for beer and cocktail.
+- **Why:** Spanish is the owner's first language and the first launch language, and the slang fits the app's playful tone better than the formal words.
+- **Instead of:** Formal Spanish, like Cerveza and Cóctel.
+- **PR:** [#63](https://github.com/pablocolaiacovo/clinkr/pull/63)
+
 ## 2026-10-30 · Comments only where code can't explain itself
 
 - **Decision:** Comments are only for complex blocks that stay complex after simplifying, and for legally required headers. Changes delete unnecessary comments in the files they touch.
@@ -66,6 +73,12 @@ What changed in each release is in the [GitHub releases](https://github.com/pabl
 - **Decision:** `main` plus short-lived branches, squash-merged. Semantic versioning, staying on `0.x` until the first public release.
 - **Why:** Keep `main` working without adding paperwork to a one-person project.
 - **PR:** [#1](https://github.com/pablocolaiacovo/clinkr/pull/1)
+
+## 2026-10-27 · Require iOS 26 and watchOS 26
+
+- **Decision:** Both apps need the newest iOS and watchOS, 26, and the code uses the newest Swift and SwiftUI, including Swift 6 strict concurrency.
+- **Why:** The app's code should be state of the art.
+- **Commit:** [3d6eeee](https://github.com/pablocolaiacovo/clinkr/commit/3d6eeee)
 
 ## From the start · Self-care, never drink counts
 
