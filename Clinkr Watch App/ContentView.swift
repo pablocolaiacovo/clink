@@ -1,20 +1,13 @@
 import SwiftUI
 
+/// The Watch app's screens. Only Add for now; Tonight (#7) and Night come next, in that swipe order.
 struct ContentView: View {
     var body: some View {
-        VStack(spacing: 8) {
-            Image(systemName: "wineglass")
-                .font(.title)
-                .foregroundStyle(.tint)
-            Text("Clinkr")
-                .font(.headline)
-            Text("Hello from Watch")
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-        }
+        AddView()
     }
 }
 
 #Preview {
     ContentView()
+        .environment(NightStore(fileURL: .temporaryDirectory.appending(path: "preview-nights.json")))
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D3278BFAE30B3BB8F30757D /* DrinkButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F010F9D40FF84966923479 /* DrinkButtonTests.swift */; };
+		5826BC935FEE9050ABC1CF29 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34380FD90B9453B48E1C6A48 /* AddView.swift */; };
+		85E78942AB512E47B7C99335 /* DrinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89A93A994BC308F93B8DAEE /* DrinkButton.swift */; };
 		03C2F7A872718D156E871A5C /* NightStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9468A4EBA822D9AE568E168F /* NightStore.swift */; };
 		FBB03664678DCF63D1060EA6 /* NightStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19E880594EBB2DE32515C61 /* NightStoreTests.swift */; };
 		93FB729231529AA4EA989CA3 /* DrinkStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD97F9F89870E0AD392132B /* DrinkStyle.swift */; };
@@ -89,6 +92,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		85F010F9D40FF84966923479 /* DrinkButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkButtonTests.swift; sourceTree = "<group>"; };
+		34380FD90B9453B48E1C6A48 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		D89A93A994BC308F93B8DAEE /* DrinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkButton.swift; sourceTree = "<group>"; };
 		9468A4EBA822D9AE568E168F /* NightStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightStore.swift; sourceTree = "<group>"; };
 		D19E880594EBB2DE32515C61 /* NightStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightStoreTests.swift; sourceTree = "<group>"; };
 		7EAFCFB8D84EF1A51540F143 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
@@ -137,6 +143,7 @@
 			children = (
 				D907FBA45DE71A86EDBE0570 /* ClinkrWatchAppTests.swift */,
 				D19E880594EBB2DE32515C61 /* NightStoreTests.swift */,
+				85F010F9D40FF84966923479 /* DrinkButtonTests.swift */,
 			);
 			path = "Clinkr Watch AppTests";
 			sourceTree = "<group>";
@@ -169,6 +176,8 @@
 				FAD9341F9F060A344C623EA9 /* Assets.xcassets */,
 				C28A8F41CDE733FB24735D6D /* ClinkrWatchApp.swift */,
 				9468A4EBA822D9AE568E168F /* NightStore.swift */,
+				34380FD90B9453B48E1C6A48 /* AddView.swift */,
+				D89A93A994BC308F93B8DAEE /* DrinkButton.swift */,
 				36502BA3B027395E1AB5F58C /* ContentView.swift */,
 				B874113A24A09DEB8F79788F /* Preview Content */,
 			);
@@ -362,6 +371,7 @@
 			knownRegions = (
 				Base,
 				en,
+				es,
 			);
 			mainGroup = 2D92AB38ADAD2B3E760C2872;
 			minimizedProjectReferenceProxies = 1;
@@ -414,6 +424,8 @@
 				F56B609D2CE8C380D628DC04 /* Drink.swift in Sources */,
 				683EE74A02FFA99699BD105C /* Night.swift in Sources */,
 				03C2F7A872718D156E871A5C /* NightStore.swift in Sources */,
+				5826BC935FEE9050ABC1CF29 /* AddView.swift in Sources */,
+				85E78942AB512E47B7C99335 /* DrinkButton.swift in Sources */,
 				93FB729231529AA4EA989CA3 /* DrinkStyle.swift in Sources */,
 				B39CC67C984437805C61BCCF /* Layout.swift in Sources */,
 				D3FC1D5F2FDC4576A34030D3 /* Palette.swift in Sources */,
@@ -462,6 +474,7 @@
 				0151CE526E4E8240D838F034 /* DesignSystemTests.swift in Sources */,
 				C0E5AF074447F7DCD325D276 /* NightTests.swift in Sources */,
 				FBB03664678DCF63D1060EA6 /* NightStoreTests.swift in Sources */,
+				1D3278BFAE30B3BB8F30757D /* DrinkButtonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
