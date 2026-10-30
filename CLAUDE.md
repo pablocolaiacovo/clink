@@ -8,7 +8,8 @@ An iPhone app with a companion Apple Watch app, written in SwiftUI. It's a hobby
 |---|---|---|
 | `Clinkr/` | Clinkr (iOS 26+) | iPhone app. Bundle ID `com.colaiacovo.clinkr` |
 | `Clinkr Watch App/` | Clinkr Watch App (watchOS 26+) | Watch app, embedded in the iPhone app. Bundle ID `com.colaiacovo.clinkr.watchkitapp` |
-| `Shared/` | Clinkr and Clinkr Watch App | Code both apps compile, like the data model. Tested in `ClinkrTests/` |
+| `Shared/` | Clinkr and Clinkr Watch App | Code and strings both apps use, like the data model and `Shared.xcstrings` |
+| `SharedTests/` | ClinkrTests and Clinkr Watch AppTests | Tests for `Shared/`, run on both platforms |
 | `ClinkrTests/` | ClinkrTests | iPhone unit tests (Swift Testing) |
 | `ClinkrUITests/` | ClinkrUITests | iPhone UI tests (XCTest) |
 | `Clinkr Watch AppTests/` | Clinkr Watch AppTests | Watch unit tests (Swift Testing) |
@@ -24,7 +25,7 @@ scripts/test.sh          # lint + iPhone tests + Watch tests
 scripts/test.sh lint     # swift-format lint only
 scripts/test.sh ios      # iPhone unit + UI tests
 scripts/test.sh watch    # Watch unit tests
-xcrun swift-format format --in-place --recursive Clinkr "Clinkr Watch App" Shared ClinkrTests ClinkrUITests "Clinkr Watch AppTests"
+xcrun swift-format format --in-place --recursive Clinkr "Clinkr Watch App" Shared SharedTests ClinkrTests ClinkrUITests "Clinkr Watch AppTests"
 ```
 
 Run `scripts/test.sh` before calling a change done. Build output goes to `build/` (gitignored).

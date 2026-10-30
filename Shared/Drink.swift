@@ -13,16 +13,20 @@ enum DrinkType: String, CaseIterable, Codable, Sendable {
         self != .water
     }
 
-    /// The name shown on screen, translated through the String Catalog.
+    /// The name shown on screen. Translated in `Shared/Shared.xcstrings`, which both apps include, so the names
+    /// only need translating once.
     var displayName: LocalizedStringResource {
         switch self {
-        case .beer: LocalizedStringResource("Beer", comment: "Drink type")
-        case .wine: LocalizedStringResource("Wine", comment: "Drink type")
-        case .cocktail: LocalizedStringResource("Cocktail", comment: "Drink type")
-        case .shot: LocalizedStringResource("Shot", comment: "Drink type")
-        case .water: LocalizedStringResource("Water", comment: "Drink type")
+        case .beer: LocalizedStringResource("Beer", table: Self.stringTable, comment: "Drink type")
+        case .wine: LocalizedStringResource("Wine", table: Self.stringTable, comment: "Drink type")
+        case .cocktail: LocalizedStringResource("Cocktail", table: Self.stringTable, comment: "Drink type")
+        case .shot: LocalizedStringResource("Shot", table: Self.stringTable, comment: "Drink type")
+        case .water: LocalizedStringResource("Water", table: Self.stringTable, comment: "Drink type")
         }
     }
+
+    /// The String Catalog for text in `Shared/`.
+    static let stringTable = "Shared"
 }
 
 /// One drink (or water) logged during a night.

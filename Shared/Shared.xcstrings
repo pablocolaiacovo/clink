@@ -1,0 +1,21 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Beer" : {
+      "comment" : "Drink type"
+    },
+    "Cocktail" : {
+      "comment" : "Drink type"
+    },
+    "Shot" : {
+      "comment" : "Drink type"
+    },
+    "Water" : {
+      "comment" : "Drink type"
+    },
+    "Wine" : {
+      "comment" : "Drink type"
+    }
+  },
+  "version" : "1.0"
+}
