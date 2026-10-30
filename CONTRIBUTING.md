@@ -32,6 +32,17 @@ Every pull request goes through the same steps:
 
 GitHub doesn't enforce the review step, so it's up to you to do it before merging.
 
+## Code comments
+
+Write code that explains itself through clear names and small, simple pieces, rather than adding comments. Only two kinds of comments belong in the code:
+
+- **Comments a complex block can't do without.** Treat the need for one as a sign the block should be simplified first. Comment it only if it stays complex after that, and explain *why* it works that way, not what each line does.
+- **Legally required comments**, such as copyright or license headers.
+
+Delete any other comment, such as one that repeats what the code says or leftover commented-out code. Code reviews should flag them.
+
+This applies to existing code too. When a change touches a file, for a new feature or anything else, delete the unnecessary comments already in that file as part of the same change.
+
 ## Commit messages
 
 Use a short summary line in the imperative ("Add heart rate screen", not "Added..."), under about 70 characters. Add a blank line and more detail if the change needs explaining.
