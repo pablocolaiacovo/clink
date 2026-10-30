@@ -21,6 +21,17 @@ Keep branches small and merge them within a few days. Merge with **Squash and me
 
 `main` is protected against force-pushes and deletion. Pull requests can only be merged once the CI check (**Build and test**) passes. As the repo admin, you can still push small changes straight to `main`, and CI runs on them after the push.
 
+## Pull requests
+
+Every pull request goes through the same steps:
+
+1. Run `scripts/test.sh` locally, push the branch and open the pull request.
+2. Once it's open, run `/code-review` on it in Claude Code, passing the PR number (e.g. `/code-review 48`). This is required for every pull request, however small.
+3. Fix what the review finds, or note in the pull request why a finding doesn't apply. Push the fixes; if they're more than small tweaks, run `/code-review` again.
+4. When the review is addressed and **Build and test** passes, squash and merge.
+
+GitHub doesn't enforce the review step, so it's up to you to do it before merging.
+
 ## Commit messages
 
 Use a short summary line in the imperative ("Add heart rate screen", not "Added..."), under about 70 characters. Add a blank line and more detail if the change needs explaining.
