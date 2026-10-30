@@ -29,7 +29,7 @@ flowchart LR
 
 ## 2. Inside each app
 
-Both apps are SwiftUI apps with the same shape. Each one starts at an `@main` App struct, which shows a `ContentView`. Both compile the data model in `Shared/` (`DrinkType`, `DrinkEntry`, `Night`). Each app's own state and phone/watch messaging come later.
+Both apps are SwiftUI apps with the same shape. Each one starts at an `@main` App struct, which shows a `ContentView`. Both compile `Shared/`: the data model (`DrinkType`, `DrinkEntry`, `Night`) and the design system (colors, text styles, spacing, radii and drink glyphs). Each app's own state and phone/watch messaging come later.
 
 ```mermaid
 flowchart TB
@@ -49,7 +49,7 @@ flowchart TB
         wModel -.-> wSync
     end
 
-    shared["Shared/<br/>DrinkType, DrinkEntry, Night"]
+    shared["Shared/<br/>DrinkType, DrinkEntry, Night<br/>design tokens, glyphs"]
     shared -.-> pModel
     shared -.-> wModel
 
