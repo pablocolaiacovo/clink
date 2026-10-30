@@ -1,6 +1,17 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@, %@. Your buddy is thirsty." : {
+      "comment" : "Water break nudge message. The two values are tonight's drinks and waters, like \"4 drinks\" and \"0 waters\"",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, %2$@. Tu compa tiene sed."
+          }
+        }
+      }
+    },
     "%lld drinks" : {
       "comment" : "VoiceOver label for tonight's count",
       "localizations" : {
@@ -117,6 +128,28 @@
         }
       }
     },
+    "Had one" : {
+      "comment" : "Water break nudge button that logs a water",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ya tomé uno"
+          }
+        }
+      }
+    },
+    "Later" : {
+      "comment" : "Water break nudge button that puts it off",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Después"
+          }
+        }
+      }
+    },
     "Swipe up to start the night" : {
       "comment" : "Tonight screen before the first drink",
       "localizations" : {
@@ -157,6 +190,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Deshacer"
+          }
+        }
+      }
+    },
+    "Water break?" : {
+      "comment" : "Water break nudge headline",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Un vasito de agua?"
           }
         }
       }

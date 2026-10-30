@@ -22,6 +22,10 @@ enum Size {
     static let inlineGlyph: CGFloat = 12
     /// The smallest height of anything tappable.
     static let minTarget: CGFloat = 44
+    /// A nudge's primary pill, like "Had one".
+    static let primaryPill: CGFloat = 48
+    /// A nudge's ghost pill, like "Later". Its tap area still reaches `minTarget`.
+    static let secondaryPill: CGFloat = 40
     /// The Watch tally ring's drink segments.
     static let ringStroke: CGFloat = 16
     /// The Watch tally ring's inner water ring.

@@ -6,6 +6,13 @@ Add an entry in the same pull request that makes the decision. Keep it to a few 
 
 What changed in each release is in the [GitHub releases](https://github.com/pablocolaiacovo/clinkr/releases), so there's no separate changelog.
 
+## 2026-10-30 · A water break nudge, rarely
+
+- **Decision:** After 4 drinks in a row with no water, the Watch suggests a water break, at most once an hour and never within 30 minutes of a "Later". It shows tonight's totals as facts and offers "Had one", which logs a water. The limits are kept in memory only, so a relaunch can show it again sooner.
+- **Why:** Water is the app's hero, and a nudge that comes too often turns into nagging, which breaks the "a buddy, not a judge" rule.
+- **Instead of:** A nudge based on pace or limits, which is the opt-in alert in #16.
+- **PR:** this pull request
+
 ## 2026-10-30 · Watch screens are vertical pages, Tonight first
 
 - **Decision:** The Watch's screens are vertical pages in the order Tonight, Add, Night. Tonight's ring grows 8 slots at a time and is never shown as full or over. When space runs out, as on small Watches or at large text sizes, the count shrinks before the caption and waters do. The Undo toast covers the lower part of the ring on Tonight, but pushes Add's list up so its buttons can scroll clear of it. Under the count, Tonight says "Today" or "Tonight" rather than the start time, and shows waters as the water glyph and "×3" in `ink-muted`.

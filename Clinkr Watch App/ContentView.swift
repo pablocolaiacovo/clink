@@ -1,13 +1,16 @@
 import SwiftUI
+import WatchKit
 
 /// The Watch app's screens, in swipe order: Tonight, then Add. Night (#10) comes third.
 ///
-/// The Undo toast sits under every screen, so it shows after any add, wherever it came from.
+/// The Undo toast and the water break nudge sit over every screen, so they follow any add, wherever it came from.
 struct ContentView: View {
     @Environment(NightStore.self) private var nightStore
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.accessibilityVoiceOverEnabled) private var voiceOverEnabled
     @State private var undoable: Undoable?
+    @State private var waterNudge = WaterNudge()
+    @State private var showsWaterNudge = false
 
     /// The count is taken when the entry is added, so the toast doesn't change number while it slides away after an
     /// undo.
@@ -27,7 +30,28 @@ struct ContentView: View {
             }
             .tabViewStyle(.verticalPage)
         }
+        .overlay {
+            if showsWaterNudge, let night = nightStore.activeNight {
+                WaterNudgeView(
+                    drinkCount: night.drinkCount,
+                    waterCount: night.waterCount,
+                    onHadOne: {
+                        closeWaterNudge()
+                        WKInterfaceDevice.current().play(DrinkType.water.addHaptic)
+                        nightStore.add(.water)
+                    },
+                    onLater: {
+                        waterNudge.markDismissed(at: .now)
+                        closeWaterNudge()
+                    }
+                )
+                .transition(reduceMotion ? .opacity : .move(edge: .bottom))
+            }
+        }
         .onChange(of: nightStore.lastAdded) { _, entry in
+            if let entry, entry.type.countsAsDrink {
+                showWaterNudgeIfDue(at: entry.timestamp)
+            }
             withAnimation(UndoToast.animation) {
                 undoable = entry.map { Undoable(entry: $0, count: count(like: $0)) }
             }
@@ -61,6 +85,21 @@ struct ContentView: View {
             }
             .padding(.horizontal, Space.s2)
             .transition(reduceMotion ? .opacity : .move(edge: .bottom).combined(with: .opacity))
+        }
+    }
+
+    private func showWaterNudgeIfDue(at date: Date) {
+        guard let night = nightStore.activeNight, waterNudge.shouldShow(for: night, at: date) else { return }
+        waterNudge.markShown(at: date)
+        WKInterfaceDevice.current().play(.notification)
+        withAnimation(UndoToast.animation) {
+            showsWaterNudge = true
+        }
+    }
+
+    private func closeWaterNudge() {
+        withAnimation(UndoToast.animation) {
+            showsWaterNudge = false
         }
     }
 
