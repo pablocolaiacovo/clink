@@ -4,6 +4,7 @@ import SwiftUI
 /// confirmation: Undo removes the entry straight away.
 struct UndoToast: View {
     static let duration: Duration = .seconds(5)
+    static let animation: Animation = .snappy(duration: 0.3)
 
     let type: DrinkType
     /// Tonight's drinks including this one, or tonight's waters when it's a water.

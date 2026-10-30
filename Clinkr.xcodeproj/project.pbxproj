@@ -14,6 +14,7 @@
 		C3D5E7F92A4B6C8DAE3F5A72 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D4C6E8FA3B5C7D9EBF4A6B83 /* Localizable.xcstrings */; };
 		03C2F7A872718D156E871A5C /* NightStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9468A4EBA822D9AE568E168F /* NightStore.swift */; };
 		FBB03664678DCF63D1060EA6 /* NightStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19E880594EBB2DE32515C61 /* NightStoreTests.swift */; };
+		E5F7A9BB4C6D8E0FA15B7C94 /* UndoToastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A8BACC5D7E9F10B26C8DA5 /* UndoToastTests.swift */; };
 		93FB729231529AA4EA989CA3 /* DrinkStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD97F9F89870E0AD392132B /* DrinkStyle.swift */; };
 		B39CC67C984437805C61BCCF /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC8F0F06BAC2BFC83F5E162 /* Layout.swift */; };
 		D3FC1D5F2FDC4576A34030D3 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFCFB8D84EF1A51540F143 /* Palette.swift */; };
@@ -101,6 +102,7 @@
 		D4C6E8FA3B5C7D9EBF4A6B83 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		9468A4EBA822D9AE568E168F /* NightStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightStore.swift; sourceTree = "<group>"; };
 		D19E880594EBB2DE32515C61 /* NightStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightStoreTests.swift; sourceTree = "<group>"; };
+		F6A8BACC5D7E9F10B26C8DA5 /* UndoToastTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoToastTests.swift; sourceTree = "<group>"; };
 		7EAFCFB8D84EF1A51540F143 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		9775BAA519AF9F060D460D13 /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
 		5AC8F0F06BAC2BFC83F5E162 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			children = (
 				D907FBA45DE71A86EDBE0570 /* ClinkrWatchAppTests.swift */,
 				D19E880594EBB2DE32515C61 /* NightStoreTests.swift */,
+				F6A8BACC5D7E9F10B26C8DA5 /* UndoToastTests.swift */,
 				85F010F9D40FF84966923479 /* DrinkButtonTests.swift */,
 			);
 			path = "Clinkr Watch AppTests";
@@ -482,6 +485,7 @@
 				0151CE526E4E8240D838F034 /* DesignSystemTests.swift in Sources */,
 				C0E5AF074447F7DCD325D276 /* NightTests.swift in Sources */,
 				FBB03664678DCF63D1060EA6 /* NightStoreTests.swift in Sources */,
+				E5F7A9BB4C6D8E0FA15B7C94 /* UndoToastTests.swift in Sources */,
 				1D3278BFAE30B3BB8F30757D /* DrinkButtonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
