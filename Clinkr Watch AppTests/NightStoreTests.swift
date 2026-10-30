@@ -4,13 +4,18 @@ import Testing
 @testable import Clinkr_Watch_App
 
 @MainActor
-struct NightStoreTests {
-    /// A fresh file per test, so tests don't share saved nights.
-    private let fileURL = URL.temporaryDirectory.appending(path: "NightStoreTests-\(UUID()).json")
+final class NightStoreTests {
+    /// A fresh folder per test, so tests don't share saved nights. Swift Testing makes a new instance for each test.
+    private let folderURL = URL.temporaryDirectory.appending(path: "NightStoreTests-\(UUID())")
+    private var fileURL: URL { folderURL.appending(path: "nights.json") }
     private let start = Date(timeIntervalSinceReferenceDate: 0)
 
     private func minutes(_ minutes: Double) -> Date {
         start.addingTimeInterval(minutes * 60)
+    }
+
+    deinit {
+        try? FileManager.default.removeItem(at: folderURL)
     }
 
     /// A new store reading the same file, like the app launching again after being force-quit.
@@ -75,6 +80,26 @@ struct NightStoreTests {
         #expect(relaunch().activeNight == nil)
     }
 
+    @Test func removingTheFirstEntryMovesTheStart() throws {
+        let store = NightStore(fileURL: fileURL)
+        store.add(.beer, at: minutes(0))
+        store.add(.wine, at: minutes(90))
+        let mistake = try #require(store.activeNight?.entries.first)
+
+        store.removeEntry(id: mistake.id)
+        #expect(store.activeNight?.startTime == minutes(90))
+        #expect(store.activeNight?.entries.map(\.type) == [.wine])
+    }
+
+    @Test func removingAnUnknownEntryChangesNothing() {
+        let store = NightStore(fileURL: fileURL)
+        store.add(.beer, at: minutes(0))
+        let before = store.activeNight
+
+        store.removeEntry(id: UUID())
+        #expect(store.activeNight == before)
+    }
+
     // MARK: End
 
     @Test func endingQueuesTheNightForThePhone() throws {
@@ -98,6 +123,27 @@ struct NightStoreTests {
 
         #expect(store.activeNight?.entries.map(\.type) == [.wine])
         #expect(store.activeNight?.id != store.pendingNights.first?.id)
+    }
+
+    @Test func drinkAfterALongGapEndsTheForgottenNight() throws {
+        let store = NightStore(fileURL: fileURL)
+        store.add(.beer, at: minutes(0))
+        store.add(.wine, at: minutes(30))
+        store.add(.shot, at: minutes(30) + NightStore.staleNightGap)
+
+        let forgotten = try #require(store.pendingNights.first)
+        #expect(forgotten.endTime == minutes(30))
+        #expect(forgotten.entries.map(\.type) == [.beer, .wine])
+        #expect(store.activeNight?.entries.map(\.type) == [.shot])
+    }
+
+    @Test func drinkJustBeforeTheGapJoinsTheNight() {
+        let store = NightStore(fileURL: fileURL)
+        store.add(.beer, at: minutes(0))
+        store.add(.wine, at: minutes(0) + NightStore.staleNightGap - 60)
+
+        #expect(store.pendingNights.isEmpty)
+        #expect(store.activeNight?.entries.count == 2)
     }
 
     @Test func endingWithNoNightDoesNothing() {
@@ -126,11 +172,48 @@ struct NightStoreTests {
         #expect(reopened.pendingNights == store.pendingNights)
     }
 
-    @Test func unreadableFileStartsEmptyAndIsKept() throws {
+    @Test func undecodableFileStartsEmptyAndIsKept() throws {
+        try FileManager.default.createDirectory(at: folderURL, withIntermediateDirectories: true)
         try Data("not json".utf8).write(to: fileURL)
 
         let store = NightStore(fileURL: fileURL)
         #expect(store.activeNight == nil)
         #expect(FileManager.default.fileExists(atPath: fileURL.appendingPathExtension("corrupt").path()))
+    }
+
+    @Test func fileThatCantBeReadYetIsNeverOverwritten() throws {
+        NightStore(fileURL: fileURL).add(.beer, at: minutes(0))
+        // Like a Watch that restarted and hasn't been unlocked: the file is there but can't be read.
+        try FileManager.default.setAttributes([.posixPermissions: 0o000], ofItemAtPath: fileURL.path())
+
+        let locked = relaunch()
+        #expect(locked.activeNight == nil)
+        locked.add(.wine, at: minutes(10))
+        #expect(locked.saveFailed)
+
+        try FileManager.default.setAttributes([.posixPermissions: 0o644], ofItemAtPath: fileURL.path())
+        #expect(relaunch().activeNight?.entries.map(\.type) == [.beer])
+        #expect(!FileManager.default.fileExists(atPath: fileURL.appendingPathExtension("corrupt").path()))
+    }
+
+    @Test func savedNightsLoadOnTheNextChangeOnceReadable() throws {
+        NightStore(fileURL: fileURL).add(.beer, at: minutes(0))
+        try FileManager.default.setAttributes([.posixPermissions: 0o000], ofItemAtPath: fileURL.path())
+        let store = relaunch()
+
+        try FileManager.default.setAttributes([.posixPermissions: 0o644], ofItemAtPath: fileURL.path())
+        store.add(.wine, at: minutes(10))
+        #expect(store.activeNight?.entries.map(\.type) == [.beer, .wine])
+        #expect(!store.saveFailed)
+    }
+
+    @Test func failedSaveIsReported() throws {
+        // A file where the folder should be, so nothing can be written inside it.
+        try Data().write(to: folderURL)
+        let store = NightStore(fileURL: fileURL)
+
+        store.add(.beer, at: minutes(0))
+        #expect(store.saveFailed)
+        #expect(store.activeNight?.entries.count == 1)
     }
 }
