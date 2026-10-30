@@ -35,7 +35,7 @@ This checks the code style with swift-format, then runs the iPhone unit and UI t
 
 ## Workflow
 
-How to work on the repo is in [CONTRIBUTING.md](CONTRIBUTING.md): branches, pull requests (each one needs a `/code-review` in Claude Code before merging), code comments, versions and releases. Diagrams of how the iPhone and Watch apps fit together are in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+How to work on the repo is in [CONTRIBUTING.md](CONTRIBUTING.md): branches, pull requests (each one needs a `/code-review` in Claude Code before merging), code comments, versions and releases. Diagrams of how the iPhone and Watch apps fit together are in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), and the decisions behind the app and why they were made are in [docs/DECISIONS.md](docs/DECISIONS.md).
 
 ## License
 

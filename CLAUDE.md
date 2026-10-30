@@ -15,6 +15,7 @@ An iPhone app with a companion Apple Watch app, written in SwiftUI. It's a hobby
 | `Clinkr Watch AppTests/` | Clinkr Watch AppTests | Watch unit tests (Swift Testing) |
 | `scripts/test.sh` | | Lint and tests, used by CI too |
 | `docs/ARCHITECTURE.md` | | Mermaid diagrams of how the apps fit together |
+| `docs/DECISIONS.md` | | Decisions and the reasons behind them, newest first. Read it before changing something that looks deliberate |
 
 Swift 6 language mode, so strict concurrency checking is on.
 
