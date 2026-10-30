@@ -1,7 +1,7 @@
 import SwiftUI
 import WatchKit
 
-/// The Watch app's screens, in swipe order: Tonight, then Add. Night (#10) comes third.
+/// The Watch app's screens, in swipe order: Tonight, Add, then Night.
 ///
 /// The Undo toast and the water break nudge sit over every screen, so they follow any add, wherever it came from.
 struct ContentView: View {
@@ -13,6 +13,12 @@ struct ContentView: View {
     @State private var showsWaterNudge = false
     /// The drink that makes the nudge due, waiting for its Undo toast to go first.
     @State private var pendingNudge: DrinkEntry.ID?
+    @State private var page = Page.tonight
+    @State private var showsNightSaved = false
+
+    private enum Page {
+        case tonight, add, night
+    }
 
     /// The count is taken when the entry is added, so the toast doesn't change number while it slides away after an
     /// undo.
@@ -24,11 +30,15 @@ struct ContentView: View {
     var body: some View {
         // The stack gives the clock its own space, so the grid scrolls under it cleanly.
         NavigationStack {
-            TabView {
+            TabView(selection: $page) {
                 TonightView()
                     .overlay(alignment: .bottom) { undoToast }
+                    .tag(Page.tonight)
                 AddView()
                     .safeAreaInset(edge: .bottom, spacing: 0) { undoToast }
+                    .tag(Page.add)
+                NightView(onEnd: endNight)
+                    .tag(Page.night)
             }
             .tabViewStyle(.verticalPage)
         }
@@ -52,6 +62,22 @@ struct ContentView: View {
                 )
                 .transition(reduceMotion ? .opacity : .move(edge: .bottom))
             }
+        }
+        .overlay {
+            if showsNightSaved {
+                NightSavedView { closeNightSaved() }
+                    .transition(.opacity)
+            }
+        }
+        .task(id: showsNightSaved) {
+            // Under VoiceOver it stays until tapped, so the message isn't cut off mid-read.
+            guard showsNightSaved, !voiceOverEnabled else { return }
+            do {
+                try await Task.sleep(for: NightSavedView.duration)
+            } catch {
+                return
+            }
+            closeNightSaved()
         }
         .onChange(of: nightStore.lastAdded) { _, entry in
             // An undo or a water clears it, and another drink takes its place.
@@ -111,6 +137,22 @@ struct ContentView: View {
             }
             .padding(.horizontal, Space.s2)
             .transition(reduceMotion ? .opacity : .move(edge: .bottom).combined(with: .opacity))
+        }
+    }
+
+    /// Saves the night and goes back to an empty Tonight, ready for the next one.
+    private func endNight() {
+        nightStore.endNight()
+        WKInterfaceDevice.current().play(.success)
+        withAnimation(WaterNudgeView.animation) {
+            page = .tonight
+            showsNightSaved = true
+        }
+    }
+
+    private func closeNightSaved() {
+        withAnimation(WaterNudgeView.animation) {
+            showsNightSaved = false
         }
     }
 

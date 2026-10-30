@@ -20,6 +20,8 @@ enum Size {
     static let glyph: CGFloat = 30
     /// Drink glyphs next to a caption, like the water count on the Tonight screen.
     static let inlineGlyph: CGFloat = 12
+    /// A drink glyph at the start of a list row, like on the Watch's Night screen.
+    static let rowGlyph: CGFloat = 20
     /// The smallest height of anything tappable.
     static let minTarget: CGFloat = 44
     /// A nudge's primary pill, like "Had one".

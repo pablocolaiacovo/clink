@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C6D7E8F901A2B3C4D5E6F70 /* NightViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7E8F901A2B3C4D5E6F7081 /* NightViewTests.swift */; };
+		3A4B5C6D7E8F901A2B3C4D5E /* NightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5C6D7E8F901A2B3C4D5E6F /* NightView.swift */; };
 		1E2F30415263748596071829 /* WaterNudgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3041526374859607182930 /* WaterNudgeTests.swift */; };
 		9C0D1E2F3041526374859607 /* WaterNudgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1E2F304152637485960718 /* WaterNudgeView.swift */; };
 		7A8B9C0D1E2F304152637485 /* WaterNudge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9C0D1E2F30415263748596 /* WaterNudge.swift */; };
@@ -101,6 +103,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6D7E8F901A2B3C4D5E6F7081 /* NightViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightViewTests.swift; sourceTree = "<group>"; };
+		4B5C6D7E8F901A2B3C4D5E6F /* NightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightView.swift; sourceTree = "<group>"; };
 		2F3041526374859607182930 /* WaterNudgeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterNudgeTests.swift; sourceTree = "<group>"; };
 		0D1E2F304152637485960718 /* WaterNudgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterNudgeView.swift; sourceTree = "<group>"; };
 		8B9C0D1E2F30415263748596 /* WaterNudge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterNudge.swift; sourceTree = "<group>"; };
@@ -162,6 +166,7 @@
 				D907FBA45DE71A86EDBE0570 /* ClinkrWatchAppTests.swift */,
 				D19E880594EBB2DE32515C61 /* NightStoreTests.swift */,
 				F6A8BACC5D7E9F10B26C8DA5 /* UndoToastTests.swift */,
+				6D7E8F901A2B3C4D5E6F7081 /* NightViewTests.swift */,
 				2F3041526374859607182930 /* WaterNudgeTests.swift */,
 				6F708192A3B4C5D6E7F8091A /* TallyRingTests.swift */,
 				85F010F9D40FF84966923479 /* DrinkButtonTests.swift */,
@@ -200,6 +205,7 @@
 				34380FD90B9453B48E1C6A48 /* AddView.swift */,
 				D89A93A994BC308F93B8DAEE /* DrinkButton.swift */,
 				B2E4D6F8193C5E7A9B2D4F61 /* UndoToast.swift */,
+				4B5C6D7E8F901A2B3C4D5E6F /* NightView.swift */,
 				0D1E2F304152637485960718 /* WaterNudgeView.swift */,
 				8B9C0D1E2F30415263748596 /* WaterNudge.swift */,
 				4D5E6F708192A3B4C5D6E7F8 /* TonightView.swift */,
@@ -455,6 +461,7 @@
 				5826BC935FEE9050ABC1CF29 /* AddView.swift in Sources */,
 				85E78942AB512E47B7C99335 /* DrinkButton.swift in Sources */,
 				A1F3C5E7092B4D6F8A1C3E50 /* UndoToast.swift in Sources */,
+				3A4B5C6D7E8F901A2B3C4D5E /* NightView.swift in Sources */,
 				9C0D1E2F3041526374859607 /* WaterNudgeView.swift in Sources */,
 				7A8B9C0D1E2F304152637485 /* WaterNudge.swift in Sources */,
 				3C4D5E6F708192A3B4C5D6E7 /* TonightView.swift in Sources */,
@@ -508,6 +515,7 @@
 				C0E5AF074447F7DCD325D276 /* NightTests.swift in Sources */,
 				FBB03664678DCF63D1060EA6 /* NightStoreTests.swift in Sources */,
 				E5F7A9BB4C6D8E0FA15B7C94 /* UndoToastTests.swift in Sources */,
+				5C6D7E8F901A2B3C4D5E6F70 /* NightViewTests.swift in Sources */,
 				1E2F30415263748596071829 /* WaterNudgeTests.swift in Sources */,
 				5E6F708192A3B4C5D6E7F809 /* TallyRingTests.swift in Sources */,
 				1D3278BFAE30B3BB8F30757D /* DrinkButtonTests.swift in Sources */,

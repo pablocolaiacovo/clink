@@ -1,0 +1,127 @@
+import SwiftUI
+
+/// The Night screen, third in the swipe order: "End night", then tonight's drinks and waters, newest first. Swiping a
+/// row left removes it, like a later undo.
+struct NightView: View {
+    @Environment(NightStore.self) private var nightStore
+    let onEnd: () -> Void
+
+    /// Tonight's entries as the list shows them, newest first.
+    static func rows(in night: Night) -> [DrinkEntry] {
+        night.entries.reversed()
+    }
+
+    var body: some View {
+        List {
+            if let night = nightStore.activeNight {
+                endButton
+                    .listRowBackground(Color.clear)
+                ForEach(Self.rows(in: night)) { entry in
+                    EntryRow(entry: entry)
+                        .listRowBackground(RoundedRectangle(cornerRadius: Radius.card).fill(.surface))
+                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                            Button {
+                                nightStore.removeEntry(id: entry.id)
+                            } label: {
+                                Label("Remove", systemImage: "trash.fill")
+                            }
+                            .tint(.surfaceRaised)
+                        }
+                }
+            } else {
+                Text("Drinks you add show up here.")
+                    .typeStyle(.watchCaption)
+                    .foregroundStyle(.inkMuted)
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: .infinity)
+                    .listRowBackground(Color.clear)
+            }
+        }
+        .scrollContentBackground(.hidden)
+        .background(.bg)
+    }
+
+    private var endButton: some View {
+        Button(action: onEnd) {
+            Text("End night")
+                .typeStyle(.watchBody)
+                .foregroundStyle(.onPop)
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+                .padding(.horizontal, Space.s3)
+                .frame(maxWidth: .infinity, minHeight: Size.primaryPill)
+                .background(.fizz, in: Capsule())
+                .contentShape(Capsule())
+        }
+        .buttonStyle(.plain)
+    }
+}
+
+/// One logged drink or water: its glyph in its color, its name and the time it was added.
+private struct EntryRow: View {
+    let entry: DrinkEntry
+
+    var body: some View {
+        HStack(spacing: Space.s2) {
+            entry.type.glyph
+                .resizable()
+                .frame(width: Size.rowGlyph, height: Size.rowGlyph)
+                .foregroundStyle(entry.type.color)
+                .accessibilityHidden(true)
+            Text(entry.type.displayName)
+                .typeStyle(.watchBody)
+                .foregroundStyle(.ink)
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+            Spacer(minLength: Space.s1)
+            Text(entry.timestamp, format: .dateTime.hour().minute())
+                .typeStyle(.watchCaption)
+                .monospacedDigit()
+                .foregroundStyle(.inkMuted)
+                .lineLimit(1)
+        }
+        .frame(minHeight: Size.minTarget)
+        .accessibilityElement(children: .combine)
+    }
+}
+
+/// Shown for a moment after ending the night, over a Tonight that's already reset for the next one.
+struct NightSavedView: View {
+    static let duration: Duration = .seconds(3)
+
+    let onDismiss: () -> Void
+
+    var body: some View {
+        Text("Night saved. Get home safe.")
+            .typeStyle(.watchTitle)
+            .foregroundStyle(.ink)
+            .multilineTextAlignment(.center)
+            .padding(.horizontal, Space.s2)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(.bg)
+            .contentShape(Rectangle())
+            .onTapGesture(perform: onDismiss)
+            .accessibilityAddTraits(.isModal)
+            .onAppear {
+                AccessibilityNotification.ScreenChanged(nil).post()
+            }
+    }
+}
+
+#Preview("Tonight") {
+    let store = NightStore.preview()
+    for type in [DrinkType.beer, .water, .wine, .shot] {
+        store.add(type)
+    }
+    return NightView {}
+        .environment(store)
+}
+
+#Preview("Before the night") {
+    NightView {}
+        .environment(NightStore.preview())
+}
+
+#Preview("Saved") {
+    NightSavedView {}
+}
