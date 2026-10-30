@@ -14,7 +14,8 @@ struct ContentView: View {
     /// The drink that makes the nudge due, waiting for its Undo toast to go first.
     @State private var pendingNudge: DrinkEntry.ID?
     @State private var page = Page.tonight
-    @State private var showsNightSaved = false
+    /// The night just ended, while "Night saved" shows with its Undo.
+    @State private var endedNight: Night.ID?
 
     private enum Page {
         case tonight, add, night
@@ -64,16 +65,19 @@ struct ContentView: View {
             }
         }
         .overlay {
-            if showsNightSaved {
-                NightSavedView { closeNightSaved() }
-                    .transition(.opacity)
+            if let endedNight {
+                NightSavedView(
+                    onUndo: { reopenNight(endedNight) },
+                    onDismiss: closeNightSaved
+                )
+                .transition(.opacity)
             }
         }
-        .task(id: showsNightSaved) {
-            // Under VoiceOver it stays until tapped, so the message isn't cut off mid-read.
-            guard showsNightSaved, !voiceOverEnabled else { return }
+        .task(id: endedNight) {
+            // Undo lasts as long as the toast's. Under VoiceOver it stays until closed, so it isn't cut off mid-read.
+            guard endedNight != nil, !voiceOverEnabled else { return }
             do {
-                try await Task.sleep(for: NightSavedView.duration)
+                try await Task.sleep(for: UndoToast.duration)
             } catch {
                 return
             }
@@ -142,17 +146,27 @@ struct ContentView: View {
 
     /// Saves the night and goes back to an empty Tonight, ready for the next one.
     private func endNight() {
+        let id = nightStore.activeNight?.id
         nightStore.endNight()
         WKInterfaceDevice.current().play(.success)
-        withAnimation(WaterNudgeView.animation) {
+        withAnimation(Motion.standard) {
             page = .tonight
-            showsNightSaved = true
+            endedNight = id
+        }
+    }
+
+    /// Takes back End night and returns to the Night page it was ended from.
+    private func reopenNight(_ id: Night.ID) {
+        nightStore.reopenNight(id: id)
+        withAnimation(Motion.standard) {
+            page = .night
+            endedNight = nil
         }
     }
 
     private func closeNightSaved() {
-        withAnimation(WaterNudgeView.animation) {
-            showsNightSaved = false
+        withAnimation(Motion.standard) {
+            endedNight = nil
         }
     }
 

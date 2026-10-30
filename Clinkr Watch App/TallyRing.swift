@@ -6,7 +6,7 @@ import SwiftUI
 /// The ring grows by `slotsPerLap` at a time, so it's never shown as "over".
 struct TallyRing: View {
     static let slotsPerLap = 8
-    static let animation: Animation = .snappy(duration: 0.3)
+    static let animation = Motion.standard
 
     /// Tonight's drinks in the order they were added, without water.
     let drinks: [DrinkType]

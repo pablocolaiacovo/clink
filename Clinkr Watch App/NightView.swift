@@ -6,9 +6,9 @@ struct NightView: View {
     @Environment(NightStore.self) private var nightStore
     let onEnd: () -> Void
 
-    /// Tonight's entries as the list shows them, newest first.
-    static func rows(in night: Night) -> [DrinkEntry] {
-        night.entries.reversed()
+    /// Hour and minute, plus the weekday on a night long enough for times to repeat.
+    static func timeFormat(for night: Night) -> Date.FormatStyle {
+        night.spansMoreThanADay ? .dateTime.weekday(.abbreviated).hour().minute() : .dateTime.hour().minute()
     }
 
     var body: some View {
@@ -16,10 +16,11 @@ struct NightView: View {
             if let night = nightStore.activeNight {
                 endButton
                     .listRowBackground(Color.clear)
-                ForEach(Self.rows(in: night)) { entry in
-                    EntryRow(entry: entry)
+                ForEach(night.newestFirst) { entry in
+                    EntryRow(entry: entry, timeFormat: Self.timeFormat(for: night))
                         .listRowBackground(RoundedRectangle(cornerRadius: Radius.card).fill(.surface))
-                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                        // No full swipe: removing has no undo, so it takes the swipe and then a tap.
+                        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                             Button {
                                 nightStore.removeEntry(id: entry.id)
                             } label: {
@@ -60,6 +61,7 @@ struct NightView: View {
 /// One logged drink or water: its glyph in its color, its name and the time it was added.
 private struct EntryRow: View {
     let entry: DrinkEntry
+    let timeFormat: Date.FormatStyle
 
     var body: some View {
         HStack(spacing: Space.s2) {
@@ -74,7 +76,7 @@ private struct EntryRow: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.8)
             Spacer(minLength: Space.s1)
-            Text(entry.timestamp, format: .dateTime.hour().minute())
+            Text(entry.timestamp, format: timeFormat)
                 .typeStyle(.watchCaption)
                 .monospacedDigit()
                 .foregroundStyle(.inkMuted)
@@ -85,26 +87,34 @@ private struct EntryRow: View {
     }
 }
 
-/// Shown for a moment after ending the night, over a Tonight that's already reset for the next one.
+/// Shown for a moment after ending the night, over a Tonight that's already reset for the next one. Undo takes the
+/// end back.
 struct NightSavedView: View {
-    static let duration: Duration = .seconds(3)
-
+    let onUndo: () -> Void
     let onDismiss: () -> Void
 
     var body: some View {
-        Text("Night saved. Get home safe.")
-            .typeStyle(.watchTitle)
-            .foregroundStyle(.ink)
-            .multilineTextAlignment(.center)
-            .padding(.horizontal, Space.s2)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.bg)
-            .contentShape(Rectangle())
-            .onTapGesture(perform: onDismiss)
-            .accessibilityAddTraits(.isModal)
-            .onAppear {
-                AccessibilityNotification.ScreenChanged(nil).post()
-            }
+        VStack(spacing: Space.s3) {
+            Text("Night saved. Get home safe.")
+                .typeStyle(.watchTitle)
+                .foregroundStyle(.ink)
+                .multilineTextAlignment(.center)
+                // With VoiceOver it stays until closed, so the message itself closes it.
+                .accessibilityAddTraits(.isButton)
+                .accessibilityHint(Text("Closes this message"))
+                .accessibilityAction(.default, onDismiss)
+            UndoButton(action: onUndo)
+        }
+        .padding(.horizontal, Space.s2)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.bg)
+        .contentShape(Rectangle())
+        .onTapGesture(perform: onDismiss)
+        .accessibilityElement(children: .contain)
+        .accessibilityAddTraits(.isModal)
+        .onAppear {
+            AccessibilityNotification.ScreenChanged(nil).post()
+        }
     }
 }
 
@@ -123,5 +133,5 @@ struct NightSavedView: View {
 }
 
 #Preview("Saved") {
-    NightSavedView {}
+    NightSavedView(onUndo: {}, onDismiss: {})
 }

@@ -4,7 +4,7 @@ import SwiftUI
 /// confirmation: Undo removes the entry straight away.
 struct UndoToast: View {
     static let duration: Duration = .seconds(5)
-    static let animation: Animation = .snappy(duration: 0.3)
+    static let animation = Motion.standard
 
     let type: DrinkType
     /// Tonight's drinks including this one, or tonight's waters when it's a water.
@@ -57,8 +57,19 @@ struct UndoToast: View {
     }
 
     private func undoButton(showsTitle: Bool, fillsWidth: Bool) -> some View {
-        Button(action: onUndo) {
-            undoLabel(showsTitle: showsTitle)
+        UndoButton(showsTitle: showsTitle, fillsWidth: fillsWidth, action: onUndo)
+    }
+}
+
+/// The `ink` Undo pill, used by the toast and after ending the night.
+struct UndoButton: View {
+    var showsTitle = true
+    var fillsWidth = false
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            undoLabel
                 .typeStyle(.watchBody)
                 .foregroundStyle(.bg)
                 .padding(.horizontal, Space.s3)
@@ -70,7 +81,7 @@ struct UndoToast: View {
     }
 
     @ViewBuilder
-    private func undoLabel(showsTitle: Bool) -> some View {
+    private var undoLabel: some View {
         let label = Label(
             LocalizedStringResource("Undo", comment: "Button that removes the drink just added"),
             systemImage: "arrow.uturn.backward"

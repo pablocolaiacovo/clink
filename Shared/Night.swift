@@ -56,6 +56,17 @@ struct Night: Identifiable, Codable, Hashable, Sendable {
         entries.map(\.type).filter(\.countsAsDrink)
     }
 
+    /// Everything logged, newest first, the way lists show it.
+    var newestFirst: [DrinkEntry] {
+        entries.reversed()
+    }
+
+    /// Whether the entries reach more than a day past the start, so times alone could repeat.
+    var spansMoreThanADay: Bool {
+        guard let last = entries.last else { return false }
+        return last.timestamp.timeIntervalSince(startTime) >= 24 * 60 * 60
+    }
+
     /// The most recent drink, not counting water.
     var lastDrink: DrinkEntry? {
         entries.last { $0.type.countsAsDrink }
@@ -96,6 +107,11 @@ struct Night: Identifiable, Codable, Hashable, Sendable {
 
     mutating func removeEntry(id: DrinkEntry.ID) {
         entries.removeAll { $0.id == id }
+    }
+
+    /// Makes an ended night active again, like taking back End night.
+    mutating func reopen() {
+        endTime = nil
     }
 
     /// Ends the night at `date`, or at the last entry if `date` is earlier than that.

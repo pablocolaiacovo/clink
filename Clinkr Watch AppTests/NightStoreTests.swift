@@ -160,6 +160,34 @@ final class NightStoreTests {
         #expect(ended.endTime == minutes(90))
     }
 
+    @Test func reopeningTakesBackTheEnd() throws {
+        let store = NightStore(fileURL: fileURL)
+        store.add(.beer, at: minutes(0))
+        store.endNight(at: minutes(90))
+        let ended = try #require(store.pendingNights.first)
+
+        store.reopenNight(id: ended.id)
+
+        let night = try #require(store.activeNight)
+        #expect(night.id == ended.id)
+        #expect(night.isActive)
+        #expect(store.pendingNights.isEmpty)
+        #expect(relaunch().activeNight?.id == ended.id)
+    }
+
+    @Test func reopeningDoesNothingOnceANewNightStarted() throws {
+        let store = NightStore(fileURL: fileURL)
+        store.add(.beer, at: minutes(0))
+        store.endNight(at: minutes(90))
+        let ended = try #require(store.pendingNights.first)
+        store.add(.wine, at: minutes(100))
+
+        store.reopenNight(id: ended.id)
+
+        #expect(store.activeNight?.id != ended.id)
+        #expect(store.pendingNights.map(\.id) == [ended.id])
+    }
+
     @Test func nextDrinkAfterEndingStartsANewNight() {
         let store = NightStore(fileURL: fileURL)
         store.add(.beer, at: minutes(0))

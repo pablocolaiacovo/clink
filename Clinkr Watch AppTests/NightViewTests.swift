@@ -4,17 +4,27 @@ import Testing
 @testable import Clinkr_Watch_App
 
 struct NightViewTests {
-    @Test func rowsAreNewestFirst() {
-        let start = Date(timeIntervalSinceReferenceDate: 0)
-        let night = Night(
+    private let start = Date(timeIntervalSinceReferenceDate: 0)
+
+    private func night(lastEntryAfter hours: Double) -> Night {
+        Night(
             name: "Test night",
             startTime: start,
             entries: [
-                DrinkEntry(type: .wine, timestamp: start.addingTimeInterval(60)),
                 DrinkEntry(type: .beer, timestamp: start),
-                DrinkEntry(type: .water, timestamp: start.addingTimeInterval(120)),
+                DrinkEntry(type: .wine, timestamp: start.addingTimeInterval(hours * 3600)),
             ]
         )
-        #expect(NightView.rows(in: night).map(\.type) == [.water, .wine, .beer])
+    }
+
+    @Test func aNormalNightShowsOnlyTimes() {
+        #expect(NightView.timeFormat(for: night(lastEntryAfter: 6)) == .dateTime.hour().minute())
+    }
+
+    @Test func aNightOverADayAlsoShowsTheWeekday() {
+        #expect(
+            NightView.timeFormat(for: night(lastEntryAfter: 25))
+                == .dateTime.weekday(.abbreviated).hour().minute()
+        )
     }
 }

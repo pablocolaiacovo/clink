@@ -128,6 +128,17 @@
         }
       }
     },
+    "Closes this message" : {
+      "comment" : "VoiceOver hint on the message shown after ending the night",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cierra este mensaje"
+          }
+        }
+      }
+    },
     "Drinks you add show up here." : {
       "comment" : "Night screen before anything is logged tonight",
       "localizations" : {

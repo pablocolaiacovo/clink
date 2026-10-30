@@ -59,3 +59,9 @@ extension View {
         modifier(StickerShadow())
     }
 }
+
+/// Motion from the design system: short, and skipped by callers when Reduce Motion is on.
+enum Motion {
+    /// Toasts, overlays, page changes and the ring filling.
+    static let standard: Animation = .snappy(duration: 0.3)
+}
