@@ -35,7 +35,7 @@ This checks the code style with swift-format, then runs the iPhone unit and UI t
 
 ## Workflow
 
-Branching, versioning and release steps are in [CONTRIBUTING.md](CONTRIBUTING.md).
+Branching, versioning and release steps are in [CONTRIBUTING.md](CONTRIBUTING.md). Diagrams of how the iPhone and Watch apps fit together are in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 ## License
 
