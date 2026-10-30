@@ -10,7 +10,7 @@ What changed in each release is in the [GitHub releases](https://github.com/pabl
 
 - **Decision:** The Watch's screens are vertical pages in the order Tonight, Add, Night. Tonight's ring grows 8 slots at a time and is never shown as full or over. When space runs out, as on small Watches or at large text sizes, the count shrinks before the caption and waters do. The Undo toast covers the lower part of the ring on Tonight, but pushes Add's list up so its buttons can scroll clear of it.
 - **Why:** Vertical pages are how watchOS apps move between screens now, and the Digital Crown scrolls them. The count is the one thing on Tonight that stays readable at a smaller size. An inset would shrink the ring every time the toast shows.
-- **PR:** #7's pull request
+- **PR:** [#67](https://github.com/pablocolaiacovo/clinkr/pull/67)
 
 ## 2026-10-30 · Undo after every add, never a confirmation
 

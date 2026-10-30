@@ -3,9 +3,10 @@ import SwiftUI
 /// Tonight's drinks as a ring: one segment per drink in its color, in the order added, with empty slots in
 /// `surface-raised`. A thin inner ring fills with water against drinks.
 ///
-/// The ring grows by `slotsPerLap` at a time, so it's never full or "over".
+/// The ring grows by `slotsPerLap` at a time, so it's never shown as "over".
 struct TallyRing: View {
     static let slotsPerLap = 8
+    static let animation: Animation = .snappy(duration: 0.3)
 
     /// Tonight's drinks in the order they were added, without water.
     let drinks: [DrinkType]
@@ -37,8 +38,8 @@ struct TallyRing: View {
             .frame(width: diameter, height: diameter)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .animation(reduceMotion ? nil : .snappy(duration: 0.3), value: drinks)
-        .animation(reduceMotion ? nil : .snappy(duration: 0.3), value: waterCount)
+        .animation(reduceMotion ? nil : Self.animation, value: drinks)
+        .animation(reduceMotion ? nil : Self.animation, value: waterCount)
     }
 
     private func segments(diameter: CGFloat) -> some View {

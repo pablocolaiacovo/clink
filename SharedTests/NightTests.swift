@@ -49,6 +49,11 @@ struct NightTests {
         #expect(night.lastDrink?.type == .wine)
     }
 
+    @Test func drinkTypesKeepOrderAndSkipWater() {
+        let night = makeNight([(.beer, 0), (.water, 10), (.shot, 20), (.beer, 30)])
+        #expect(night.drinkTypes == [.beer, .shot, .beer])
+    }
+
     @Test func onlyWaterHasNoLastDrink() {
         #expect(makeNight([(.water, 0)]).lastDrink == nil)
     }

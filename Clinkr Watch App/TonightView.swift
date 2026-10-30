@@ -8,22 +8,31 @@ struct TonightView: View {
 
     var body: some View {
         let night = nightStore.activeNight
-        Button(action: addLastDrinkAgain) {
-            TallyRing(
-                drinks: night?.entries.map(\.type).filter(\.countsAsDrink) ?? [],
-                waterCount: night?.waterCount ?? 0
-            )
+        Group {
+            if let lastDrink = night?.lastDrink {
+                Button {
+                    addAgain(lastDrink.type)
+                } label: {
+                    ring(night)
+                }
+                .buttonStyle(.plain)
+                .accessibilityHint(Text("Adds the last drink again"))
+            } else {
+                ring(night)
+            }
+        }
+        .accessibilityElement(children: .combine)
+        .padding(.horizontal, Space.s2)
+        .background(.bg)
+    }
+
+    private func ring(_ night: Night?) -> some View {
+        TallyRing(drinks: night?.drinkTypes ?? [], waterCount: night?.waterCount ?? 0)
             .overlay {
                 center(night)
                     .padding(TallyRing.thickness + Space.s1)
             }
             .contentShape(Circle())
-        }
-        .buttonStyle(.plain)
-        .accessibilityElement(children: .combine)
-        .accessibilityHint(night?.lastDrink == nil ? Text(verbatim: "") : Text("Adds the last drink again"))
-        .padding(.horizontal, Space.s2)
-        .background(.bg)
     }
 
     @ViewBuilder
@@ -79,8 +88,7 @@ struct TonightView: View {
         .padding(.top, Space.s1)
     }
 
-    private func addLastDrinkAgain() {
-        guard let type = nightStore.activeNight?.lastDrink?.type else { return }
+    private func addAgain(_ type: DrinkType) {
         WKInterfaceDevice.current().play(type.addHaptic)
         nightStore.add(type)
     }

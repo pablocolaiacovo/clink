@@ -51,6 +51,11 @@ struct Night: Identifiable, Codable, Hashable, Sendable {
         entries.count - drinkCount
     }
 
+    /// Tonight's drinks in the order they were added, without water.
+    var drinkTypes: [DrinkType] {
+        entries.map(\.type).filter(\.countsAsDrink)
+    }
+
     /// The most recent drink, not counting water.
     var lastDrink: DrinkEntry? {
         entries.last { $0.type.countsAsDrink }
