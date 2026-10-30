@@ -26,12 +26,16 @@ Keep branches small and merge them within a few days. Merge with **Squash and me
 Every pull request goes through the same steps:
 
 1. Update the docs the change affects: `README.md`, `CLAUDE.md`, `CONTRIBUTING.md` and `docs/ARCHITECTURE.md`. If the change makes a decision about how the app works or how it's built, add an entry to `docs/DECISIONS.md` with the reason. Add a diagram or other visual when it explains something faster than text, such as a Mermaid diagram in `docs/` for how pieces fit together, or a screenshot in the pull request for a new or changed screen.
-2. Run `scripts/test.sh` locally, push the branch and open the pull request.
+2. Run `scripts/test.sh` locally, push the branch and open the pull request. Fill in the template:
+   - Write `Closes #N` only if the PR meets every acceptance criterion in the issue. Otherwise write `Part of #N`, so the issue stays open.
+   - Under **Acceptance criteria**, copy each checkbox from the issue and say how it's shown to work, or which issue it's deferred to.
 3. Once it's open, run `/code-review` on it in Claude Code, passing the PR number (e.g. `/code-review 48`). This is required for every pull request, however small.
-4. Fix what the review finds, or note in the pull request why a finding doesn't apply. Push the fixes; if they're more than small tweaks, run `/code-review` again.
-5. When the review is addressed and **Build and test** passes, squash and merge.
+4. If the PR closes or is part of an issue, also run `/verify-pr` with the PR number. It checks each acceptance criterion with tests and the simulators, posts the result on the PR, and ticks the met criteria in the PR's checklist.
+5. Fix what the review and the check find, or note in the pull request why a finding doesn't apply. Push the fixes; if they're more than small tweaks, run both again.
+6. When the review is addressed, every criterion is met or deferred to an open issue, and **Build and test** passes, squash and merge.
+7. After merging, run `/verify-pr` once more. It ticks the met criteria in the issue, now that they're on `main`.
 
-GitHub doesn't enforce the review step, so it's up to you to do it before merging.
+GitHub doesn't enforce the review and verify steps, so it's up to you to do them before merging.
 
 ## Code comments
 
