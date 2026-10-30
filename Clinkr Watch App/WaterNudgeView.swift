@@ -2,6 +2,8 @@ import SwiftUI
 
 /// The water break nudge: a friendly suggestion, never a warning. "Had one" logs a water and "Later" puts it off.
 struct WaterNudgeView: View {
+    static let animation: Animation = .snappy(duration: 0.3)
+
     let drinkCount: Int
     let waterCount: Int
     let onHadOne: () -> Void
@@ -12,7 +14,10 @@ struct WaterNudgeView: View {
         NavigationStack {
             content
         }
-        .accessibilityAddTraits(.isModal)
+        // Moves VoiceOver to the nudge, which would otherwise come up unannounced over the screen it was on.
+        .onAppear {
+            AccessibilityNotification.ScreenChanged(nil).post()
+        }
     }
 
     private var content: some View {
@@ -57,6 +62,7 @@ struct WaterNudgeView: View {
             .padding(.horizontal, Space.s2)
         }
         .background(.bg)
+        .accessibilityAddTraits(.isModal)
     }
 
     /// Tonight's totals in `ink`, the rest in `ink-muted`.

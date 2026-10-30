@@ -36,6 +36,17 @@ struct WaterNudgeTests {
         #expect(!WaterNudge().shouldShow(for: tonight, at: minutes(10)))
     }
 
+    @Test func aWaterAfterTheStreakDoesNotShowIt() {
+        let tonight = night(fourInARow + [.water])
+        #expect(!WaterNudge.isDue(in: tonight))
+        #expect(!WaterNudge().shouldShow(for: tonight, at: minutes(10)))
+    }
+
+    @Test func undoingTheFourthDrinkMakesItNoLongerDue() {
+        #expect(WaterNudge.isDue(in: night(fourInARow)))
+        #expect(!WaterNudge.isDue(in: night(Array(fourInARow.dropLast()))))
+    }
+
     @Test func endingOnWaterCountsZero() {
         #expect(WaterNudge.drinksSinceLastWater(in: night([.beer, .beer, .beer, .beer, .water])) == 0)
     }
@@ -55,5 +66,13 @@ struct WaterNudgeTests {
         nudge.markDismissed(at: minutes(45))
         #expect(!nudge.shouldShow(for: night(fourInARow), at: minutes(70)))
         #expect(nudge.shouldShow(for: night(fourInARow), at: minutes(75)))
+    }
+
+    @Test func aLateLaterOutlastsTheHour() {
+        var nudge = WaterNudge()
+        nudge.markShown(at: minutes(0))
+        nudge.markDismissed(at: minutes(59))
+        #expect(!nudge.shouldShow(for: night(fourInARow), at: minutes(60)))
+        #expect(nudge.shouldShow(for: night(fourInARow), at: minutes(89)))
     }
 }

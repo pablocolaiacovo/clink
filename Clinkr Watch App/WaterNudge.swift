@@ -13,8 +13,13 @@ struct WaterNudge {
         night.entries.reversed().prefix { $0.type.countsAsDrink }.count
     }
 
+    /// Whether tonight ends in enough drinks in a row, ignoring the limits.
+    static func isDue(in night: Night) -> Bool {
+        drinksSinceLastWater(in: night) >= drinksInARow
+    }
+
     func shouldShow(for night: Night, at date: Date) -> Bool {
-        guard Self.drinksSinceLastWater(in: night) >= Self.drinksInARow else { return false }
+        guard Self.isDue(in: night) else { return false }
         if let lastShown, date.timeIntervalSince(lastShown) < Self.minimumGap {
             return false
         }
