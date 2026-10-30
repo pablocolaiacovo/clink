@@ -25,10 +25,11 @@ Keep branches small and merge them within a few days. Merge with **Squash and me
 
 Every pull request goes through the same steps:
 
-1. Run `scripts/test.sh` locally, push the branch and open the pull request.
-2. Once it's open, run `/code-review` on it in Claude Code, passing the PR number (e.g. `/code-review 48`). This is required for every pull request, however small.
-3. Fix what the review finds, or note in the pull request why a finding doesn't apply. Push the fixes; if they're more than small tweaks, run `/code-review` again.
-4. When the review is addressed and **Build and test** passes, squash and merge.
+1. Update the docs the change affects: `README.md`, `CLAUDE.md`, `CONTRIBUTING.md` and `docs/ARCHITECTURE.md`. If the change makes a decision about how the app works or how it's built, add an entry to `docs/DECISIONS.md` with the reason. Add a diagram or other visual when it explains something faster than text, such as a Mermaid diagram in `docs/` for how pieces fit together, or a screenshot in the pull request for a new or changed screen.
+2. Run `scripts/test.sh` locally, push the branch and open the pull request.
+3. Once it's open, run `/code-review` on it in Claude Code, passing the PR number (e.g. `/code-review 48`). This is required for every pull request, however small.
+4. Fix what the review finds, or note in the pull request why a finding doesn't apply. Push the fixes; if they're more than small tweaks, run `/code-review` again.
+5. When the review is addressed and **Build and test** passes, squash and merge.
 
 GitHub doesn't enforce the review step, so it's up to you to do it before merging.
 
