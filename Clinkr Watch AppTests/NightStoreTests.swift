@@ -100,6 +100,51 @@ final class NightStoreTests {
         #expect(store.activeNight == before)
     }
 
+    // MARK: Undo
+
+    @Test func addRemembersTheEntryForUndo() throws {
+        let store = NightStore(fileURL: fileURL)
+        store.add(.beer, at: minutes(0))
+        store.add(.water, at: minutes(5))
+
+        let water = try #require(store.activeNight?.entries.last)
+        #expect(store.lastAdded == water)
+    }
+
+    @Test func undoingTheLastAddForgetsIt() throws {
+        let store = NightStore(fileURL: fileURL)
+        store.add(.beer, at: minutes(0))
+        store.add(.wine, at: minutes(5))
+        let wine = try #require(store.lastAdded)
+
+        store.removeEntry(id: wine.id)
+        #expect(store.lastAdded == nil)
+        #expect(store.activeNight?.entries.map(\.type) == [.beer])
+    }
+
+    @Test func removingAnOlderEntryKeepsTheLastAdd() throws {
+        let store = NightStore(fileURL: fileURL)
+        store.add(.beer, at: minutes(0))
+        let beer = try #require(store.lastAdded)
+        store.add(.wine, at: minutes(5))
+        let wine = store.lastAdded
+
+        store.removeEntry(id: beer.id)
+        #expect(store.lastAdded == wine)
+    }
+
+    @Test func endingTheNightForgetsTheLastAdd() {
+        let store = NightStore(fileURL: fileURL)
+        store.add(.beer, at: minutes(0))
+        store.endNight(at: minutes(60))
+        #expect(store.lastAdded == nil)
+    }
+
+    @Test func lastAddIsNotSaved() {
+        NightStore(fileURL: fileURL).add(.beer, at: minutes(0))
+        #expect(relaunch().lastAdded == nil)
+    }
+
     // MARK: End
 
     @Test func endingQueuesTheNightForThePhone() throws {

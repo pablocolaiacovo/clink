@@ -17,6 +17,8 @@ final class NightStore {
     private(set) var activeNight: Night?
     /// Finished nights waiting to be sent to the iPhone, oldest first.
     private(set) var pendingNights: [Night] = []
+    /// The entry the last `add` logged, while it can still be undone. Not saved, so a relaunch forgets it.
+    private(set) var lastAdded: DrinkEntry?
     /// Whether the last save failed. What's on screen is still kept, and the next successful save writes all of it.
     private(set) var saveFailed = false
 
@@ -68,7 +70,9 @@ final class NightStore {
         if activeNight == nil {
             activeNight = Night(name: Self.defaultName(for: date), startTime: date)
         }
-        activeNight?.add(DrinkEntry(type: type, timestamp: date))
+        let entry = DrinkEntry(type: type, timestamp: date)
+        activeNight?.add(entry)
+        lastAdded = entry
         save()
     }
 
@@ -77,6 +81,9 @@ final class NightStore {
     func removeEntry(id: DrinkEntry.ID) {
         retryLoadIfNeeded()
         guard let night = activeNight, night.entries.contains(where: { $0.id == id }) else { return }
+        if lastAdded?.id == id {
+            lastAdded = nil
+        }
         let remaining = night.entries.filter { $0.id != id }
         if let first = remaining.first {
             // The placeholder name follows the new start; a name given on the iPhone stays.
@@ -103,6 +110,7 @@ final class NightStore {
         night.end(at: date)
         pendingNights.append(night)
         activeNight = nil
+        lastAdded = nil
     }
 
     /// Placeholder name until the iPhone gives the night a playful one, like "Oct 29".
