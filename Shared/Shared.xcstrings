@@ -2,19 +2,59 @@
   "sourceLanguage" : "en",
   "strings" : {
     "Beer" : {
-      "comment" : "Drink type"
+      "comment" : "Drink type",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Birra"
+          }
+        }
+      }
     },
     "Cocktail" : {
-      "comment" : "Drink type"
+      "comment" : "Drink type",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trago"
+          }
+        }
+      }
     },
     "Shot" : {
-      "comment" : "Drink type"
+      "comment" : "Drink type",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shot"
+          }
+        }
+      }
     },
     "Water" : {
-      "comment" : "Drink type"
+      "comment" : "Drink type",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agua"
+          }
+        }
+      }
     },
     "Wine" : {
-      "comment" : "Drink type"
+      "comment" : "Drink type",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vino"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

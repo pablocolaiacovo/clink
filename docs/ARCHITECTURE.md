@@ -29,7 +29,7 @@ flowchart LR
 
 ## 2. Inside each app
 
-Both apps are SwiftUI apps with the same shape. Each one starts at an `@main` App struct, which shows a `ContentView`. Both compile `Shared/`: the data model (`DrinkType`, `DrinkEntry`, `Night`) and the design system (colors, text styles, spacing, radii and drink glyphs). Each app's own state and phone/watch messaging come later.
+Both apps are SwiftUI apps with the same shape. Each one starts at an `@main` App struct, which shows a `ContentView`. Both compile `Shared/`: the data model (`DrinkType`, `DrinkEntry`, `Night`) and the design system (colors, text styles, spacing, radii and drink glyphs). The Watch keeps tonight in `NightStore`, which the Add screen's drink buttons write to. The iPhone's own state and phone/watch messaging come later.
 
 ```mermaid
 flowchart TB
@@ -42,10 +42,12 @@ flowchart TB
     end
 
     subgraph watch["Watch app (Clinkr Watch App/)"]
-        wApp["ClinkrWatchApp<br/>@main entry point"] --> wView["ContentView<br/>SwiftUI screen"]
-        wModel["Model / app state"]:::planned
+        wApp["ClinkrWatchApp<br/>@main entry point"] --> wView["ContentView"]
+        wView --> wAdd["AddView<br/>DrinkButton grid"]
+        wModel["NightStore<br/>tonight, saved to nights.json"]
         wSync["Connectivity service<br/>(WCSession)"]:::planned
-        wView -.-> wModel
+        wApp --> wModel
+        wAdd -- "add(drink)" --> wModel
         wModel -.-> wSync
     end
 

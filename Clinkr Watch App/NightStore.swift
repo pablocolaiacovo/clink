@@ -38,6 +38,11 @@ final class NightStore {
         URL.applicationSupportDirectory.appending(path: "nights.json")
     }
 
+    /// An empty store in a new temporary file, for previews, so taps in one preview never show up in the next.
+    static func preview() -> NightStore {
+        NightStore(fileURL: .temporaryDirectory.appending(path: "preview-\(UUID()).json"))
+    }
+
     /// Loads whatever was saved at `fileURL`, or starts empty if nothing was.
     init(fileURL: URL = NightStore.defaultFileURL) {
         self.fileURL = fileURL

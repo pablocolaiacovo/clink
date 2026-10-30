@@ -159,6 +159,19 @@ struct NightTests {
         for type in DrinkType.allCases {
             #expect(type.displayName.table == DrinkType.stringTable)
         }
-        #expect(String(localized: DrinkType.cocktail.displayName) == "Cocktail")
+        #expect(name(of: .cocktail, in: "en") == "Cocktail")
+        #expect(name(of: .cocktail, in: "es") == "Trago")
+    }
+
+    @Test(arguments: DrinkType.allCases)
+    func drinkNamesAreInSpanish(type: DrinkType) {
+        #expect(!name(of: type, in: "es").isEmpty)
+        #expect(name(of: type, in: "es") != name(of: type, in: "en") || type == .shot)
+    }
+
+    private func name(of type: DrinkType, in language: String) -> String {
+        var resource = type.displayName
+        resource.locale = Locale(identifier: language)
+        return String(localized: resource)
     }
 }
