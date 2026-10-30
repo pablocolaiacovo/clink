@@ -18,4 +18,4 @@ Closes #
 
 ## Testing
 
-- `scripts/test.sh` passes: lint, iPhone and Watch.
+- [ ] `scripts/test.sh` passes locally: lint, iPhone and Watch
