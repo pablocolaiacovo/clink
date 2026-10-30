@@ -15,6 +15,7 @@ An iPhone app with a companion Apple Watch app, written in SwiftUI. It's a hobby
 | `Clinkr Watch AppTests/` | Clinkr Watch AppTests | Watch unit tests (Swift Testing) |
 | `scripts/test.sh` | | Lint and tests, used by CI too |
 | `docs/ARCHITECTURE.md` | | Mermaid diagrams of how the apps fit together |
+| `docs/DECISIONS.md` | | Decisions and the reasons behind them, newest first. Read it before changing something that looks deliberate |
 
 Swift 6 language mode, so strict concurrency checking is on.
 
@@ -32,7 +33,7 @@ Run `scripts/test.sh` before calling a change done. Build output goes to `build/
 
 ## Rules
 
-- Follow `CONTRIBUTING.md` for branches, commit messages, versions and releases. Bigger changes go on a `feature/`, `fix/` or `chore/` branch with a pull request, merged with squash.
+- Follow `CONTRIBUTING.md` for how to work on the repo, such as branches, commit messages, pull requests (including the required `/code-review`, and `/verify-pr` for PRs linked to an issue), code comments and releases. Bigger changes go on a `feature/`, `fix/` or `chore/` branch with a pull request, merged with squash.
 - `main` is protected: never force-push it.
 - Code style comes from `.swift-format` (4-space indent, 120-column lines). CI fails on lint errors.
 - The project file `Clinkr.xcodeproj/project.pbxproj` is managed in Xcode. When adding files, put them in the target's folder and make sure they're added to the right target. When editing the file by hand, keep Debug and Release settings in sync.
