@@ -18,7 +18,7 @@ simulator_id() {
 
 lint() {
     echo "==> Lint"
-    xcrun swift-format lint --strict --recursive Clinkr "Clinkr Watch App" ClinkrTests ClinkrUITests "Clinkr Watch AppTests"
+    xcrun swift-format lint --strict --recursive Clinkr "Clinkr Watch App" Shared SharedTests ClinkrTests ClinkrUITests "Clinkr Watch AppTests"
 }
 
 test_scheme() {
