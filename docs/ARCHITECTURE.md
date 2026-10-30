@@ -29,7 +29,7 @@ flowchart LR
 
 ## 2. Inside each app
 
-Both apps are SwiftUI apps with the same shape. Each one starts at an `@main` App struct, which shows a `ContentView`. Both compile `Shared/`: the data model (`DrinkType`, `DrinkEntry`, `Night`) and the design system (colors, text styles, spacing, radii and drink glyphs). The Watch keeps tonight in `NightStore`, which the Add screen's drink buttons write to. A night ends when the next drink comes after a 12-hour gap (an End Night action comes later), and then moves to `pendingNights`, a queue waiting for the iPhone sync. The iPhone's own state and phone/watch messaging come later.
+Both apps are SwiftUI apps with the same shape. Each one starts at an `@main` App struct, which shows a `ContentView`. Both compile `Shared/`: the data model (`DrinkType`, `DrinkEntry`, `Night`) and the design system (colors, text styles, spacing, radii and drink glyphs). The Watch keeps tonight in `NightStore`, which the Add screen's drink buttons write to. The store remembers the last entry added, and `ContentView` shows an `UndoToast` for it under the screen for 5 seconds; Undo removes that entry. A night ends when the next drink comes after a 12-hour gap (an End Night action comes later), and then moves to `pendingNights`, a queue waiting for the iPhone sync. The iPhone's own state and phone/watch messaging come later.
 
 ```mermaid
 flowchart TB
@@ -44,10 +44,13 @@ flowchart TB
     subgraph watch["Watch app (Clinkr Watch App/)"]
         wApp["ClinkrWatchApp<br/>@main entry point"] --> wView["ContentView"]
         wView --> wAdd["AddView<br/>DrinkButton grid"]
+        wView --> wToast["UndoToast<br/>5 s after every add"]
         wModel["NightStore<br/>tonight + pendingNights,<br/>saved to nights.json"]
         wSync["Connectivity service<br/>(WCSession)"]:::planned
         wApp --> wModel
         wAdd -- "add(type)" --> wModel
+        wModel -- "lastAdded" --> wToast
+        wToast -- "removeEntry(id)" --> wModel
         wModel -.-> wSync
     end
 
