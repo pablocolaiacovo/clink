@@ -7,23 +7,30 @@ struct AddView: View {
 
     private let columns = [GridItem(.flexible(), spacing: Space.s2), GridItem(.flexible(), spacing: Space.s2)]
 
+    /// The drinks in the grid, in reading order. Water gets its own button underneath.
+    static let gridDrinks = DrinkType.allCases.filter(\.countsAsDrink)
+
     var body: some View {
         ScrollView {
             VStack(spacing: Space.s2) {
                 LazyVGrid(columns: columns, spacing: Space.s2) {
-                    ForEach(DrinkType.allCases.filter(\.countsAsDrink), id: \.self) { type in
-                        DrinkButton(type: type) { nightStore.add(type) }
+                    ForEach(Self.gridDrinks, id: \.self) { type in
+                        DrinkButton(type: type, onAdd: add)
                     }
                 }
-                DrinkButton(type: .water) { nightStore.add(.water) }
+                DrinkButton(type: .water, onAdd: add)
             }
             .padding(.horizontal, Space.s2)
         }
         .background(.bg)
     }
+
+    private func add(_ type: DrinkType) {
+        nightStore.add(type)
+    }
 }
 
 #Preview {
     AddView()
-        .environment(NightStore(fileURL: .temporaryDirectory.appending(path: "preview-nights.json")))
+        .environment(NightStore.preview())
 }

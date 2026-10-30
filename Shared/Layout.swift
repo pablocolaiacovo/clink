@@ -2,16 +2,24 @@ import SwiftUI
 
 /// Spacing steps from the design system, in points.
 enum Space {
-    /// Glyph to label, ring segment gap.
+    /// Glyph to label, ring segment gap, side padding of the half-width Watch drink buttons.
     static let s1: CGFloat = 4
     /// Watch screen side margin, gap between drink buttons.
     static let s2: CGFloat = 8
-    /// Inner padding of Watch buttons and chips.
+    /// Inner padding of Watch buttons and chips (top and bottom only on the half-width drink buttons).
     static let s3: CGFloat = 12
     /// iPhone screen gutter and card padding.
     static let s4: CGFloat = 16
     /// Between sections on the iPhone.
     static let s6: CGFloat = 24
+}
+
+/// Fixed sizes from the design system, in points.
+enum Size {
+    /// Drink glyphs on Watch buttons. Stays the same on every Watch size.
+    static let glyph: CGFloat = 30
+    /// The smallest height of anything tappable.
+    static let minTarget: CGFloat = 44
 }
 
 /// Corner radii from the design system, in points.

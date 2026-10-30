@@ -12,4 +12,9 @@ struct DrinkButtonTests {
     @Test func waterTapsUp() {
         #expect(DrinkType.water.addHaptic == .directionUp)
     }
+
+    /// Every drink has a button: the four drinks in the grid, and water underneath.
+    @Test func gridHasEveryDrinkButWater() {
+        #expect(AddView.gridDrinks == [.beer, .wine, .cocktail, .shot])
+    }
 }

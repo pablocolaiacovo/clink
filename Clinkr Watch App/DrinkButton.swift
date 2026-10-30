@@ -5,7 +5,8 @@ import WatchKit
 /// label in `.onPop`. Water is a full-width pill; the drinks are cards in a grid.
 struct DrinkButton: View {
     let type: DrinkType
-    let onAdd: () -> Void
+    /// Called with the button's own type, so a button can only ever add its own drink.
+    let onAdd: (DrinkType) -> Void
 
     /// Goes up on every tap, to replay the clink.
     @State private var taps = 0
@@ -14,12 +15,15 @@ struct DrinkButton: View {
     var body: some View {
         Button {
             WKInterfaceDevice.current().play(type.addHaptic)
-            taps += 1
-            onAdd()
+            // With Reduce Motion on, the count stays put, so the clink never plays.
+            if !reduceMotion {
+                taps += 1
+            }
+            onAdd(type)
         } label: {
             label
                 .foregroundStyle(.onPop)
-                .frame(maxWidth: .infinity, minHeight: 44)
+                .frame(maxWidth: .infinity, minHeight: Size.minTarget)
                 // Narrow sides so "Cocktail" fits a half-width tile on the smallest Watch.
                 .padding(.vertical, Space.s3)
                 .padding(.horizontal, Space.s1)
@@ -27,8 +31,7 @@ struct DrinkButton: View {
                 .contentShape(shape)
         }
         .buttonStyle(.plain)
-        // With Reduce Motion on, the trigger never changes, so the clink never plays.
-        .keyframeAnimator(initialValue: 1.0, trigger: reduceMotion ? 0 : taps) { content, scale in
+        .keyframeAnimator(initialValue: 1.0, trigger: taps) { content, scale in
             content.scaleEffect(scale)
         } keyframes: { _ in
             // The clink: 1 → 0.92 → 1.06 → 1, in 380ms.
@@ -56,15 +59,17 @@ struct DrinkButton: View {
     private var glyph: some View {
         type.glyph
             .resizable()
-            .frame(width: 30, height: 30)
+            .frame(width: Size.glyph, height: Size.glyph)
             .accessibilityHidden(true)
     }
 
     /// The label in `watch-body`, or `watch-caption` when that doesn't fit, like a long Spanish name on a 41mm Watch.
+    /// At the largest text sizes, where even the caption doesn't fit, the caption shrinks rather than being cut off.
     private var name: some View {
         ViewThatFits(in: .horizontal) {
             Text(type.displayName).typeStyle(.watchBody)
             Text(type.displayName).typeStyle(.watchCaption)
+            Text(type.displayName).typeStyle(.watchCaption).minimumScaleFactor(0.5)
         }
         .lineLimit(1)
     }
@@ -83,8 +88,8 @@ extension DrinkType {
 
 #Preview {
     HStack(spacing: Space.s2) {
-        DrinkButton(type: .beer) {}
-        DrinkButton(type: .wine) {}
+        DrinkButton(type: .beer) { _ in }
+        DrinkButton(type: .wine) { _ in }
     }
     .padding(Space.s2)
 }
