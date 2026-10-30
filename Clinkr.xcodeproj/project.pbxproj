@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03C2F7A872718D156E871A5C /* NightStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9468A4EBA822D9AE568E168F /* NightStore.swift */; };
+		FBB03664678DCF63D1060EA6 /* NightStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19E880594EBB2DE32515C61 /* NightStoreTests.swift */; };
 		0C07FE6F4263583472A076D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261572D4D37933BFCF2FD2D /* ContentView.swift */; };
 		02E2F630B7777994171AFFDE /* Night.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17ED6C1C837283881502354F /* Night.swift */; };
 		2C2C3C688B48FA2EB8530081 /* Shared.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9A792CB8B3328C2A01528C73 /* Shared.xcstrings */; };
@@ -75,6 +77,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9468A4EBA822D9AE568E168F /* NightStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightStore.swift; sourceTree = "<group>"; };
+		D19E880594EBB2DE32515C61 /* NightStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightStoreTests.swift; sourceTree = "<group>"; };
 		04463A8B30072C8C9E0687EB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		116D05C2BB68B89D2055E9EC /* Clinkr Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Clinkr Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17ED6C1C837283881502354F /* Night.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Night.swift; sourceTree = "<group>"; };
@@ -114,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				D907FBA45DE71A86EDBE0570 /* ClinkrWatchAppTests.swift */,
+				D19E880594EBB2DE32515C61 /* NightStoreTests.swift */,
 			);
 			path = "Clinkr Watch AppTests";
 			sourceTree = "<group>";
@@ -145,6 +150,7 @@
 			children = (
 				FAD9341F9F060A344C623EA9 /* Assets.xcassets */,
 				C28A8F41CDE733FB24735D6D /* ClinkrWatchApp.swift */,
+				9468A4EBA822D9AE568E168F /* NightStore.swift */,
 				36502BA3B027395E1AB5F58C /* ContentView.swift */,
 				B874113A24A09DEB8F79788F /* Preview Content */,
 			);
@@ -381,6 +387,7 @@
 				99CCF00465B0718B3EE61BE3 /* ContentView.swift in Sources */,
 				F56B609D2CE8C380D628DC04 /* Drink.swift in Sources */,
 				683EE74A02FFA99699BD105C /* Night.swift in Sources */,
+				03C2F7A872718D156E871A5C /* NightStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +425,7 @@
 			files = (
 				F7A695BAE4B9F05A2D7E04E6 /* ClinkrWatchAppTests.swift in Sources */,
 				C0E5AF074447F7DCD325D276 /* NightTests.swift in Sources */,
+				FBB03664678DCF63D1060EA6 /* NightStoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
