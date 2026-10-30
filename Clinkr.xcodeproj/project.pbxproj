@@ -8,7 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0C07FE6F4263583472A076D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261572D4D37933BFCF2FD2D /* ContentView.swift */; };
+		02E2F630B7777994171AFFDE /* Night.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17ED6C1C837283881502354F /* Night.swift */; };
 		29E77FABF996E6F31D2E77A9 /* ClinkrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26382F9FA11B93709A2B41CD /* ClinkrApp.swift */; };
+		3FF235BA0BD38425057D7E01 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F2699C8EB06890887204E /* Drink.swift */; };
+		4C1E9A0D5B7F23E68A91D0C2 /* NightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B09B8021D23371CFAA15F9B /* NightTests.swift */; };
+		683EE74A02FFA99699BD105C /* Night.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17ED6C1C837283881502354F /* Night.swift */; };
 		3026D57BFB7E4A4778F239C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FF1F10CBDFA723862543C79 /* Assets.xcassets */; };
 		53C862FB621240E4945F0D64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAD9341F9F060A344C623EA9 /* Assets.xcassets */; };
 		6F69DB087EC4D026EFAA502A /* ClinkrWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28A8F41CDE733FB24735D6D /* ClinkrWatchApp.swift */; };
@@ -18,6 +22,7 @@
 		A05E8BCC2C3B009088FF19ED /* ClinkrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04C2C9314EAA444C7C409F /* ClinkrTests.swift */; };
 		C9D3D75A654795CF00269EDD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC8F102D9F9420A3D24FA4E2 /* Preview Assets.xcassets */; };
 		E76284B6739753B95944CB1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04463A8B30072C8C9E0687EB /* Preview Assets.xcassets */; };
+		F56B609D2CE8C380D628DC04 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F2699C8EB06890887204E /* Drink.swift */; };
 		F7A695BAE4B9F05A2D7E04E6 /* ClinkrWatchAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D907FBA45DE71A86EDBE0570 /* ClinkrWatchAppTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,9 +74,12 @@
 /* Begin PBXFileReference section */
 		04463A8B30072C8C9E0687EB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		116D05C2BB68B89D2055E9EC /* Clinkr Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Clinkr Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		17ED6C1C837283881502354F /* Night.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Night.swift; sourceTree = "<group>"; };
+		197F2699C8EB06890887204E /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		26382F9FA11B93709A2B41CD /* ClinkrApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinkrApp.swift; sourceTree = "<group>"; };
 		36502BA3B027395E1AB5F58C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4F48644FFE21A369AD23E0EE /* ClinkrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinkrUITests.swift; sourceTree = "<group>"; };
+		7B09B8021D23371CFAA15F9B /* NightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightTests.swift; sourceTree = "<group>"; };
 		89C0E3B52628790F5260C89C /* Clinkr.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Clinkr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF1F10CBDFA723862543C79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0ED2ABC095B7CAA4ABBD7D8 /* ClinkrTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ClinkrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +122,7 @@
 				20202B14E160C6BCFE1A7D4C /* Clinkr Watch AppTests */,
 				B82D9344A2BEEDBC5F315C59 /* ClinkrTests */,
 				595288E4456B9AAFC1F85D57 /* ClinkrUITests */,
+				65B99C733F3748D5F8896D7C /* Shared */,
 				19D9C726BF5C420A5E1918A9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -149,8 +158,18 @@
 			isa = PBXGroup;
 			children = (
 				BF04C2C9314EAA444C7C409F /* ClinkrTests.swift */,
+				7B09B8021D23371CFAA15F9B /* NightTests.swift */,
 			);
 			path = ClinkrTests;
+			sourceTree = "<group>";
+		};
+		65B99C733F3748D5F8896D7C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				197F2699C8EB06890887204E /* Drink.swift */,
+				17ED6C1C837283881502354F /* Night.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		B874113A24A09DEB8F79788F /* Preview Content */ = {
@@ -345,6 +364,8 @@
 			files = (
 				6F69DB087EC4D026EFAA502A /* ClinkrWatchApp.swift in Sources */,
 				99CCF00465B0718B3EE61BE3 /* ContentView.swift in Sources */,
+				F56B609D2CE8C380D628DC04 /* Drink.swift in Sources */,
+				683EE74A02FFA99699BD105C /* Night.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +383,8 @@
 			files = (
 				29E77FABF996E6F31D2E77A9 /* ClinkrApp.swift in Sources */,
 				0C07FE6F4263583472A076D4 /* ContentView.swift in Sources */,
+				3FF235BA0BD38425057D7E01 /* Drink.swift in Sources */,
+				02E2F630B7777994171AFFDE /* Night.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A05E8BCC2C3B009088FF19ED /* ClinkrTests.swift in Sources */,
+				4C1E9A0D5B7F23E68A91D0C2 /* NightTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
