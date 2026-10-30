@@ -8,7 +8,7 @@ An iPhone app with a companion Apple Watch app, written in SwiftUI. It's a hobby
 |---|---|---|
 | `Clinkr/` | Clinkr (iOS 26+) | iPhone app. Bundle ID `com.colaiacovo.clinkr` |
 | `Clinkr Watch App/` | Clinkr Watch App (watchOS 26+) | Watch app, embedded in the iPhone app. Bundle ID `com.colaiacovo.clinkr.watchkitapp` |
-| `Shared/` | Clinkr and Clinkr Watch App | Code and strings both apps use, like the data model and `Shared.xcstrings` |
+| `Shared/` | Clinkr and Clinkr Watch App | Code and strings both apps use: the data model, the design system tokens and drink glyphs, and `Shared.xcstrings` |
 | `SharedTests/` | ClinkrTests and Clinkr Watch AppTests | Tests for `Shared/`, run on both platforms |
 | `ClinkrTests/` | ClinkrTests | iPhone unit tests (Swift Testing) |
 | `ClinkrUITests/` | ClinkrUITests | iPhone UI tests (XCTest) |
@@ -38,3 +38,4 @@ Run `scripts/test.sh` before calling a change done. Build output goes to `build/
 - The project file `Clinkr.xcodeproj/project.pbxproj` is managed in Xcode. When adding files, put them in the target's folder and make sure they're added to the right target. When editing the file by hand, keep Debug and Release settings in sync.
 - Version (`MARKETING_VERSION`) and build (`CURRENT_PROJECT_VERSION`) are set at the project level, so the iPhone and Watch apps always match. Apple requires that.
 - Put code that both apps need in `Shared/`, added to both the Clinkr and Clinkr Watch App targets, rather than copying it.
+- Screens use the design system by name (`.foregroundStyle(.ink)`, `.typeStyle(.title)`, `Space.s4`, `Radius.card`, `type.glyph`), never raw colors, sizes or emoji. The design system lives at https://claude.ai/artifact/MUR9q8zqsWysfgui8mdNsh; keep `Shared/Palette.swift` and `Shared/Glyphs.xcassets` in step with it.

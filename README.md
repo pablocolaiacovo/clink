@@ -13,7 +13,7 @@ An iPhone app with a companion Apple Watch app, built with SwiftUI.
 |---|---|---|
 | `Clinkr/` | Clinkr | The iPhone app |
 | `Clinkr Watch App/` | Clinkr Watch App | The Apple Watch app (embedded in the iPhone app) |
-| `Shared/` | Both | Code both apps use, like the data model |
+| `Shared/` | Both | Code both apps use, like the data model and the design system |
 
 ## Running
 
