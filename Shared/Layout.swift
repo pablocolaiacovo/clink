@@ -18,8 +18,14 @@ enum Space {
 enum Size {
     /// Drink glyphs on Watch buttons. Stays the same on every Watch size.
     static let glyph: CGFloat = 30
+    /// Drink glyphs next to a caption, like the water count on the Tonight screen.
+    static let inlineGlyph: CGFloat = 12
     /// The smallest height of anything tappable.
     static let minTarget: CGFloat = 44
+    /// The Watch tally ring's drink segments.
+    static let ringStroke: CGFloat = 16
+    /// The Watch tally ring's inner water ring.
+    static let waterRingStroke: CGFloat = 5
 }
 
 /// Corner radii from the design system, in points.

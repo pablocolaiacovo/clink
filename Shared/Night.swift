@@ -51,6 +51,11 @@ struct Night: Identifiable, Codable, Hashable, Sendable {
         entries.count - drinkCount
     }
 
+    /// The most recent drink, not counting water.
+    var lastDrink: DrinkEntry? {
+        entries.last { $0.type.countsAsDrink }
+    }
+
     func count(of type: DrinkType) -> Int {
         entries.count { $0.type == type }
     }

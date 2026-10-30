@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E6F708192A3B4C5D6E7F809 /* TallyRingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F708192A3B4C5D6E7F8091A /* TallyRingTests.swift */; };
+		3C4D5E6F708192A3B4C5D6E7 /* TonightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E6F708192A3B4C5D6E7F8 /* TonightView.swift */; };
+		1A2B3C4D5E6F708192A3B4C5 /* TallyRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3C4D5E6F708192A3B4C5D6 /* TallyRing.swift */; };
 		1D3278BFAE30B3BB8F30757D /* DrinkButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F010F9D40FF84966923479 /* DrinkButtonTests.swift */; };
 		5826BC935FEE9050ABC1CF29 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34380FD90B9453B48E1C6A48 /* AddView.swift */; };
 		85E78942AB512E47B7C99335 /* DrinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89A93A994BC308F93B8DAEE /* DrinkButton.swift */; };
@@ -95,6 +98,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6F708192A3B4C5D6E7F8091A /* TallyRingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TallyRingTests.swift; sourceTree = "<group>"; };
+		4D5E6F708192A3B4C5D6E7F8 /* TonightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TonightView.swift; sourceTree = "<group>"; };
+		2B3C4D5E6F708192A3B4C5D6 /* TallyRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TallyRing.swift; sourceTree = "<group>"; };
 		85F010F9D40FF84966923479 /* DrinkButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkButtonTests.swift; sourceTree = "<group>"; };
 		34380FD90B9453B48E1C6A48 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		D89A93A994BC308F93B8DAEE /* DrinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkButton.swift; sourceTree = "<group>"; };
@@ -150,6 +156,7 @@
 				D907FBA45DE71A86EDBE0570 /* ClinkrWatchAppTests.swift */,
 				D19E880594EBB2DE32515C61 /* NightStoreTests.swift */,
 				F6A8BACC5D7E9F10B26C8DA5 /* UndoToastTests.swift */,
+				6F708192A3B4C5D6E7F8091A /* TallyRingTests.swift */,
 				85F010F9D40FF84966923479 /* DrinkButtonTests.swift */,
 			);
 			path = "Clinkr Watch AppTests";
@@ -186,6 +193,8 @@
 				34380FD90B9453B48E1C6A48 /* AddView.swift */,
 				D89A93A994BC308F93B8DAEE /* DrinkButton.swift */,
 				B2E4D6F8193C5E7A9B2D4F61 /* UndoToast.swift */,
+				4D5E6F708192A3B4C5D6E7F8 /* TonightView.swift */,
+				2B3C4D5E6F708192A3B4C5D6 /* TallyRing.swift */,
 				36502BA3B027395E1AB5F58C /* ContentView.swift */,
 				B874113A24A09DEB8F79788F /* Preview Content */,
 				D4C6E8FA3B5C7D9EBF4A6B83 /* Localizable.xcstrings */,
@@ -437,6 +446,8 @@
 				5826BC935FEE9050ABC1CF29 /* AddView.swift in Sources */,
 				85E78942AB512E47B7C99335 /* DrinkButton.swift in Sources */,
 				A1F3C5E7092B4D6F8A1C3E50 /* UndoToast.swift in Sources */,
+				3C4D5E6F708192A3B4C5D6E7 /* TonightView.swift in Sources */,
+				1A2B3C4D5E6F708192A3B4C5 /* TallyRing.swift in Sources */,
 				93FB729231529AA4EA989CA3 /* DrinkStyle.swift in Sources */,
 				B39CC67C984437805C61BCCF /* Layout.swift in Sources */,
 				D3FC1D5F2FDC4576A34030D3 /* Palette.swift in Sources */,
@@ -486,6 +497,7 @@
 				C0E5AF074447F7DCD325D276 /* NightTests.swift in Sources */,
 				FBB03664678DCF63D1060EA6 /* NightStoreTests.swift in Sources */,
 				E5F7A9BB4C6D8E0FA15B7C94 /* UndoToastTests.swift in Sources */,
+				5E6F708192A3B4C5D6E7F809 /* TallyRingTests.swift in Sources */,
 				1D3278BFAE30B3BB8F30757D /* DrinkButtonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
