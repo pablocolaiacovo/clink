@@ -29,7 +29,7 @@ flowchart LR
 
 ## 2. Inside each app
 
-Both apps are SwiftUI apps with the same shape. Each one starts at an `@main` App struct, which shows a `ContentView`. Both compile `Shared/`: the data model (`DrinkType`, `DrinkEntry`, `Night`) and the design system (colors, text styles, spacing, radii and drink glyphs). The Watch keeps tonight in `NightStore`, which the Add screen's drink buttons write to. Ending a night moves it to `pendingNights`, a queue waiting for the iPhone sync. The iPhone's own state and phone/watch messaging come later.
+Both apps are SwiftUI apps with the same shape. Each one starts at an `@main` App struct, which shows a `ContentView`. Both compile `Shared/`: the data model (`DrinkType`, `DrinkEntry`, `Night`) and the design system (colors, text styles, spacing, radii and drink glyphs). The Watch keeps tonight in `NightStore`, which the Add screen's drink buttons write to. A night ends when the next drink comes after a 12-hour gap (an End Night action comes later), and then moves to `pendingNights`, a queue waiting for the iPhone sync. The iPhone's own state and phone/watch messaging come later.
 
 ```mermaid
 flowchart TB
@@ -54,6 +54,7 @@ flowchart TB
     shared["Shared/<br/>DrinkType, DrinkEntry, Night<br/>design tokens, glyphs"]
     shared -.-> pModel
     shared --> wModel
+    shared --> wAdd
 
     pSync <-. "WatchConnectivity<br/>(Bluetooth / Wi-Fi)" .-> wSync
 
