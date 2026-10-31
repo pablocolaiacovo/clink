@@ -29,7 +29,7 @@ flowchart LR
 
 ## 2. Inside each app
 
-Both apps are SwiftUI apps with the same shape. Each one starts at an `@main` App struct, which shows a `ContentView`. Both compile `Shared/`: the data model (`DrinkType`, `DrinkEntry`, `Night`) and the design system (colors, text styles, spacing, radii and drink glyphs). The Watch's screens are vertical pages: Tonight, with the `TallyRing`, then Add. The Watch keeps tonight in `NightStore`, which the Add screen's drink buttons and a tap on the ring write to. The store remembers the last entry added, and `ContentView` shows an `UndoToast` for it under the screen for 5 seconds; Undo removes that entry. After 4 drinks in a row with no water, `ContentView` also slides up a `WaterNudgeView` once that drink's toast has had its 5 seconds, at most once an hour and never within 30 minutes of a "Later". A night ends when the next drink comes after a 12-hour gap (an End Night action comes later), and then moves to `pendingNights`, a queue waiting for the iPhone sync. The iPhone's own state and phone/watch messaging come later.
+Both apps are SwiftUI apps with the same shape. Each one starts at an `@main` App struct, which shows a `ContentView`. Both compile `Shared/`: the data model (`DrinkType`, `DrinkEntry`, `Night`) and the design system (colors, text styles, spacing, radii and drink glyphs). The Watch's screens are vertical pages: Tonight, with the `TallyRing`, then Add, then Night, which lists tonight's entries (a swipe removes one) and ends the night. The Watch keeps tonight in `NightStore`, which the Add screen's drink buttons and a tap on the ring write to. The store remembers the last entry added, and `ContentView` shows an `UndoToast` for it under the screen for 5 seconds; Undo removes that entry. After 4 drinks in a row with no water, `ContentView` also slides up a `WaterNudgeView` once that drink's toast has had its 5 seconds, at most once an hour and never within 30 minutes of a "Later". A night ends with End night, or when the next drink comes after a 12-hour gap, and then moves to `pendingNights`, a queue waiting for the iPhone sync. For 5 seconds after End night, Undo takes the night back out of the queue with `reopenNight(id:)`, as long as it's still the last night there and no new one has started. The iPhone's own state and phone/watch messaging come later.
 
 ```mermaid
 flowchart TB
@@ -47,6 +47,7 @@ flowchart TB
         wView --> wAdd["AddView<br/>DrinkButton grid"]
         wView --> wToast["UndoToast<br/>5 s after every add"]
         wView --> wNudge["WaterNudgeView<br/>after 4 drinks, no water"]
+        wView --> wNight["NightView<br/>entries + End night"]
         wModel["NightStore<br/>tonight + pendingNights,<br/>saved to nights.json"]
         wSync["Connectivity service<br/>(WCSession)"]:::planned
         wApp --> wModel
@@ -55,6 +56,7 @@ flowchart TB
         wModel -- "lastAdded" --> wToast
         wToast -- "removeEntry(id)" --> wModel
         wNudge -- "add(.water)" --> wModel
+        wNight -- "removeEntry(id), endNight(), reopenNight(id)" --> wModel
         wModel -.-> wSync
     end
 

@@ -128,6 +128,39 @@
         }
       }
     },
+    "Closes this message" : {
+      "comment" : "VoiceOver hint on the message shown after ending the night",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cierra este mensaje"
+          }
+        }
+      }
+    },
+    "Drinks you add show up here." : {
+      "comment" : "Night screen before anything is logged tonight",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lo que sumes aparece acá."
+          }
+        }
+      }
+    },
+    "End night" : {
+      "comment" : "Night screen button that ends and saves tonight's night",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminar la noche"
+          }
+        }
+      }
+    },
     "Had one" : {
       "comment" : "Water break nudge button that logs a water",
       "localizations" : {
@@ -146,6 +179,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Después"
+          }
+        }
+      }
+    },
+    "Night reopened" : {
+      "comment" : "VoiceOver announcement after Undo takes back End night",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noche retomada"
+          }
+        }
+      }
+    },
+    "Night saved. Get home safe." : {
+      "comment" : "Shown after ending the night",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noche guardada. Volvé bien."
+          }
+        }
+      }
+    },
+    "Remove" : {
+      "comment" : "Swipe action on a Night screen row that removes that drink",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quitar"
           }
         }
       }

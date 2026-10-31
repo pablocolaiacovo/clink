@@ -2,7 +2,7 @@ import SwiftUI
 
 /// The water break nudge: a friendly suggestion, never a warning. "Had one" logs a water and "Later" puts it off.
 struct WaterNudgeView: View {
-    static let animation: Animation = .snappy(duration: 0.3)
+    static let animation = Motion.standard
 
     let drinkCount: Int
     let waterCount: Int

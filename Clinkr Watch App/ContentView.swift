@@ -1,7 +1,7 @@
 import SwiftUI
 import WatchKit
 
-/// The Watch app's screens, in swipe order: Tonight, then Add. Night (#10) comes third.
+/// The Watch app's screens, in swipe order: Tonight, Add, then Night.
 ///
 /// The Undo toast and the water break nudge sit over every screen, so they follow any add, wherever it came from.
 struct ContentView: View {
@@ -13,6 +13,13 @@ struct ContentView: View {
     @State private var showsWaterNudge = false
     /// The drink that makes the nudge due, waiting for its Undo toast to go first.
     @State private var pendingNudge: DrinkEntry.ID?
+    @State private var page = Page.tonight
+    /// The night just ended, while "Night saved" shows with its Undo.
+    @State private var endedNight: Night.ID?
+
+    private enum Page {
+        case tonight, add, night
+    }
 
     /// The count is taken when the entry is added, so the toast doesn't change number while it slides away after an
     /// undo.
@@ -24,11 +31,15 @@ struct ContentView: View {
     var body: some View {
         // The stack gives the clock its own space, so the grid scrolls under it cleanly.
         NavigationStack {
-            TabView {
+            TabView(selection: $page) {
                 TonightView()
                     .overlay(alignment: .bottom) { undoToast }
+                    .tag(Page.tonight)
                 AddView()
                     .safeAreaInset(edge: .bottom, spacing: 0) { undoToast }
+                    .tag(Page.add)
+                NightView(onEnd: endNight)
+                    .tag(Page.night)
             }
             .tabViewStyle(.verticalPage)
         }
@@ -52,6 +63,25 @@ struct ContentView: View {
                 )
                 .transition(reduceMotion ? .opacity : .move(edge: .bottom))
             }
+        }
+        .overlay {
+            if let endedNight {
+                NightSavedView(
+                    onUndo: { reopenNight(endedNight) },
+                    onDismiss: closeNightSaved
+                )
+                .transition(.opacity)
+            }
+        }
+        .task(id: endedNight) {
+            // Undo lasts as long as the toast's. Under VoiceOver it stays until closed, so it isn't cut off mid-read.
+            guard endedNight != nil, !voiceOverEnabled else { return }
+            do {
+                try await Task.sleep(for: UndoToast.duration)
+            } catch {
+                return
+            }
+            closeNightSaved()
         }
         .onChange(of: nightStore.lastAdded) { _, entry in
             // An undo or a water clears it, and another drink takes its place.
@@ -111,6 +141,40 @@ struct ContentView: View {
             }
             .padding(.horizontal, Space.s2)
             .transition(reduceMotion ? .opacity : .move(edge: .bottom).combined(with: .opacity))
+        }
+    }
+
+    /// Saves the night and goes back to an empty Tonight, ready for the next one.
+    private func endNight() {
+        let id = nightStore.activeNight?.id
+        nightStore.endNight()
+        WKInterfaceDevice.current().play(.success)
+        withAnimation(Motion.standard) {
+            page = .tonight
+            endedNight = id
+        }
+    }
+
+    /// Takes back End night and returns to the Night page it was ended from. If the night can't come back, the message
+    /// just closes over the empty Tonight.
+    private func reopenNight(_ id: Night.ID) {
+        guard nightStore.reopenNight(id: id) else {
+            closeNightSaved()
+            return
+        }
+        WKInterfaceDevice.current().play(.click)
+        withAnimation(Motion.standard) {
+            page = .night
+            endedNight = nil
+        }
+        if voiceOverEnabled {
+            AccessibilityNotification.Announcement(String(localized: "Night reopened")).post()
+        }
+    }
+
+    private func closeNightSaved() {
+        withAnimation(Motion.standard) {
+            endedNight = nil
         }
     }
 

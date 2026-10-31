@@ -6,6 +6,13 @@ Add an entry in the same pull request that makes the decision. Keep it to a few 
 
 What changed in each release is in the [GitHub releases](https://github.com/pablocolaiacovo/clinkr/releases), so there's no separate changelog.
 
+## 2026-10-30 · End night has no confirmation
+
+- **Decision:** The Night screen is the third Watch page. "End night" sits at the top in `fizz` and ends the night on one tap, with the `.success` haptic and "Night saved. Get home safe." with an Undo for 5 seconds, then Tonight is empty. Rows are removed with a swipe and a tap on the trash (no full swipe, since a removal has no Undo).
+- **Why:** "One tap, no thinking" and no confirmation dialogs; Undo covers a mistaken end, like it covers a mistaken add. Ending is the last thing done in a night, so it goes first on the page rather than below a long list.
+- **Instead of:** A confirmation alert, or the button at the end of the list, where it would take a lot of scrolling on a big night.
+- **PR:** [#69](https://github.com/pablocolaiacovo/clinkr/pull/69)
+
 ## 2026-10-30 · A water break nudge, rarely
 
 - **Decision:** After 4 drinks in a row with no water, the Watch suggests a water break, at most once an hour and never within 30 minutes of a "Later". It shows tonight's totals as facts and offers "Had one", which logs a water. It waits until the drink's Undo toast has had its 5 seconds, so a mis-tapped drink can still be undone, and it closes if the streak no longer holds. The limits are kept in memory only, so a relaunch can show it again sooner.

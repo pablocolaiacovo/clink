@@ -67,6 +67,27 @@ struct NightTests {
 
     // MARK: Start, end and order
 
+    @Test func newestFirstReversesTheTimeOrder() {
+        let start = Date(timeIntervalSinceReferenceDate: 0)
+        let night = Night(
+            name: "Test night",
+            startTime: start,
+            entries: [
+                DrinkEntry(type: .wine, timestamp: start.addingTimeInterval(60)),
+                DrinkEntry(type: .beer, timestamp: start),
+                DrinkEntry(type: .water, timestamp: start.addingTimeInterval(120)),
+            ]
+        )
+        #expect(night.newestFirst.map(\.type) == [.water, .wine, .beer])
+    }
+
+    @Test func reopeningMakesTheNightActiveAgain() {
+        let start = Date(timeIntervalSinceReferenceDate: 0)
+        var night = Night(name: "Test night", startTime: start, endTime: start.addingTimeInterval(3600))
+        night.reopen()
+        #expect(night.isActive)
+    }
+
     @Test func entriesAreKeptInTimeOrder() {
         var night = makeNight([(.wine, 30), (.beer, 10)])
         night.add(DrinkEntry(type: .shot, timestamp: minutes(20)))
