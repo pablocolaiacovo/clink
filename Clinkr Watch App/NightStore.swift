@@ -105,15 +105,18 @@ final class NightStore {
         save()
     }
 
-    /// Takes back an End night: the night becomes tonight's again. Only while it's still waiting for the iPhone and no
-    /// new night has started, so it never pulls back a night that's moved on.
-    func reopenNight(id: Night.ID) {
+    /// Takes back an End night: the night becomes tonight's again. Only while it's the last night waiting for the
+    /// iPhone and no new night has started, so it never pulls back a night that's moved on. Returns whether it did.
+    @discardableResult
+    func reopenNight(id: Night.ID) -> Bool {
         retryLoadIfNeeded()
-        guard activeNight == nil, let index = pendingNights.lastIndex(where: { $0.id == id }) else { return }
-        var night = pendingNights.remove(at: index)
+        guard activeNight == nil, pendingNights.last?.id == id, var night = pendingNights.popLast() else {
+            return false
+        }
         night.reopen()
         activeNight = night
         save()
+        return true
     }
 
     private func finishActiveNight(at date: Date) {

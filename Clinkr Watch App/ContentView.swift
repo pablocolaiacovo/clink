@@ -155,12 +155,20 @@ struct ContentView: View {
         }
     }
 
-    /// Takes back End night and returns to the Night page it was ended from.
+    /// Takes back End night and returns to the Night page it was ended from. If the night can't come back, the message
+    /// just closes over the empty Tonight.
     private func reopenNight(_ id: Night.ID) {
-        nightStore.reopenNight(id: id)
+        guard nightStore.reopenNight(id: id) else {
+            closeNightSaved()
+            return
+        }
+        WKInterfaceDevice.current().play(.click)
         withAnimation(Motion.standard) {
             page = .night
             endedNight = nil
+        }
+        if voiceOverEnabled {
+            AccessibilityNotification.Announcement(String(localized: "Night reopened")).post()
         }
     }
 

@@ -166,7 +166,7 @@ final class NightStoreTests {
         store.endNight(at: minutes(90))
         let ended = try #require(store.pendingNights.first)
 
-        store.reopenNight(id: ended.id)
+        #expect(store.reopenNight(id: ended.id))
 
         let night = try #require(store.activeNight)
         #expect(night.id == ended.id)
@@ -182,10 +182,37 @@ final class NightStoreTests {
         let ended = try #require(store.pendingNights.first)
         store.add(.wine, at: minutes(100))
 
-        store.reopenNight(id: ended.id)
+        #expect(!store.reopenNight(id: ended.id))
 
         #expect(store.activeNight?.id != ended.id)
         #expect(store.pendingNights.map(\.id) == [ended.id])
+    }
+
+    @Test func reopeningAnUnknownNightDoesNothing() throws {
+        let store = NightStore(fileURL: fileURL)
+        store.add(.beer, at: minutes(0))
+        store.endNight(at: minutes(90))
+        let ended = try #require(store.pendingNights.first)
+
+        #expect(!store.reopenNight(id: UUID()))
+        #expect(store.activeNight == nil)
+        #expect(store.pendingNights.map(\.id) == [ended.id])
+    }
+
+    @Test func reopeningOnlyTakesBackTheLastNight() throws {
+        let store = NightStore(fileURL: fileURL)
+        store.add(.beer, at: minutes(0))
+        store.endNight(at: minutes(90))
+        store.add(.wine, at: minutes(24 * 60))
+        store.endNight(at: minutes(25 * 60))
+        let older = try #require(store.pendingNights.first)
+        let newer = try #require(store.pendingNights.last)
+
+        #expect(!store.reopenNight(id: older.id))
+        #expect(store.activeNight == nil)
+        #expect(store.reopenNight(id: newer.id))
+        #expect(store.activeNight?.id == newer.id)
+        #expect(store.pendingNights.map(\.id) == [older.id])
     }
 
     @Test func nextDrinkAfterEndingStartsANewNight() {

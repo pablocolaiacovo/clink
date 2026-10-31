@@ -183,6 +183,17 @@
         }
       }
     },
+    "Night reopened" : {
+      "comment" : "VoiceOver announcement after Undo takes back End night",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noche retomada"
+          }
+        }
+      }
+    },
     "Night saved. Get home safe." : {
       "comment" : "Shown after ending the night",
       "localizations" : {

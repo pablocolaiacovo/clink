@@ -94,22 +94,27 @@ struct NightSavedView: View {
     let onDismiss: () -> Void
 
     var body: some View {
-        VStack(spacing: Space.s3) {
+        VStack(spacing: 0) {
             Text("Night saved. Get home safe.")
                 .typeStyle(.watchTitle)
                 .foregroundStyle(.ink)
                 .multilineTextAlignment(.center)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                // Only the message closes it, so a tap that just misses Undo doesn't throw the undo away.
+                .contentShape(Rectangle())
+                .onTapGesture(perform: onDismiss)
                 // With VoiceOver it stays until closed, so the message itself closes it.
                 .accessibilityAddTraits(.isButton)
                 .accessibilityHint(Text("Closes this message"))
                 .accessibilityAction(.default, onDismiss)
             UndoButton(action: onUndo)
+                .padding(.vertical, Space.s3)
         }
         .padding(.horizontal, Space.s2)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.bg)
+        // Taps around Undo stop here rather than reaching the screen underneath.
         .contentShape(Rectangle())
-        .onTapGesture(perform: onDismiss)
         .accessibilityElement(children: .contain)
         .accessibilityAddTraits(.isModal)
         .onAppear {
